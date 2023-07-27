@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:28 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 12:18:02 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:52:32 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 3
 # endif
+
+# define WIDTH 800
+# define HEIGHT 800
+
+# define WHEEL_UP 4
+# define WHEEL_DOWN 5
+
+# define ESC 53
+
+
 
 typedef struct s_info
 {
@@ -48,6 +58,20 @@ typedef struct s_info
     int     width;
 
 }   t_info;
+
+typedef struct s_var
+{
+    void    *mlx;
+    void    *win;
+    void    *img;
+    char    *addr;
+    int     bpp;
+    int     line_l;
+    int     endian;
+
+    
+    t_info  *info;
+}       t_var;
 
 
 char	*get_next_line(int fd);
@@ -86,6 +110,13 @@ int free_str(char *s, int res);
 char    **free_split_fail(char **s, int n);
 int free_split(char **s, int res);
 int free_info(t_info *info, int res);
+
+
+
+// cub3d_mlx
+void	my_mlx_pixel_put(t_var *var, int x, int y, int color);
+void    start_mlx(t_var *var);
+
 
 
 #endif

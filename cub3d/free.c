@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:24 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/25 19:08:33 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:08:41 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,12 @@ int free_info(t_info *info, int res)
     free(info->dir);
     free(info->dir_flags);
     free(info->fc_num);
+
+    if (!info->map_before)
+        free(info->map_before);
+    if (!info->map)
+        free_split(info->map, 1);
+    if (!info->map_test)
+        free_split(info->map_test, 1);
     return (res);
 }

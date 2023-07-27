@@ -6,7 +6,7 @@
 #    By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/21 12:22:24 by hyungjpa          #+#    #+#              #
-#    Updated: 2023/07/27 11:54:56 by hyungjpa         ###   ########.fr        #
+#    Updated: 2023/07/27 15:43:02 by hyungjpa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ SRC = free.c \
 	info_valid_2.c \
 	main.c \
 	utils.c \
+	cub3d_mlx.c \
+	
 
 
 OBJ = $(SRC:.c=.o)

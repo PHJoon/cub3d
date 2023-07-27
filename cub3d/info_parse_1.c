@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 19:12:44 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 12:15:17 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:59:45 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int parse_file(int fd, t_info *info)
         }
         if (info->map_flag)
             parse_map(s, info);
-        if (!parse_info(s, info))
-            return (free_str(s, 0));
+        else
+        {
+            if (!parse_info(s, info))
+                return (free_str(s, 0));
+        }
         check_map_flag(info);
         free(s);
     }

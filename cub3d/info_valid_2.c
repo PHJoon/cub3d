@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 19:12:41 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 11:56:12 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:12:56 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int check_map_cross(t_info *info)
     int j;
     int cnt;
 
-    cnt = 0;
     i = -1;
     while (++i < info->height)
     {
@@ -105,6 +104,7 @@ int check_map_cross(t_info *info)
         {
             if (info->map_test[i][j] == '0')
             {
+                cnt = 0;
                 check_cross(info, i, j, &cnt);
                 if (cnt != 4)
                     return (0);

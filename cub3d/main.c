@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:30 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 12:18:19 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:13:09 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int main(int ac, char *av[])
 {
     t_info  info;
+    t_var   var;
     int     fd;
 
     if (ac != 2)
@@ -32,13 +33,21 @@ int main(int ac, char *av[])
 
     // 인자 파싱
     if (!parse_file(fd, &info))
+    {
+        free_info(&info, 0);
         return (print_error());
+    }
 
     // 유효성 체크
     if (!valid_info(&info))
+    {
+        free_info(&info, 0);
         return (print_error());
-
+    }
     // mlx_init
+
+    var.info = &info;
+    start_mlx(&var);
 
     return (free_info(&info, 1));
 }

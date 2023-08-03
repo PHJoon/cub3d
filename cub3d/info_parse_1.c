@@ -28,9 +28,9 @@ static void    check_map_flag(t_info *info)
     }
 }
 
-int parse_file(int fd, t_info *info)
+t_flag  parse_file(int fd, t_info *info)
 {
-    char *s;
+    char    *s;
 
     while (1)
     {
@@ -46,10 +46,10 @@ int parse_file(int fd, t_info *info)
         else
         {
             if (!parse_info(s, info))
-                return (free_str(s, 0));
+                return (free_str(s, FAIL));
         }
         check_map_flag(info);
         free(s);
     }
-    return (1);
+    return (SUCCESS);
 }

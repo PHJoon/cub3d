@@ -18,17 +18,17 @@ int main(int ac, char *av[])
     t_var   var;
     int     fd;
 
+    // 인자 체크
     if (check_arg(ac, av) == FAIL)
         return (EXIT_FAILURE);
     fd = open(av[1], O_RDONLY);
     if (fd == -1)
         return (print_error("Open Error"));
-    // 메모리 할당
-    if (!init_info(&info))
+    // 메모리 할당: enum 추가 사용 이외에는 추가 x
+    if (init_info(&info) == FAIL)
         return (print_error("Malloc Error"));
-
     // 인자 파싱
-    if (!parse_file(fd, &info))
+    if (parse_file(fd, &info) == FAIL)
     {
         free_info(&info, 0);
         return (print_error("Parsing Error"));
@@ -40,9 +40,8 @@ int main(int ac, char *av[])
         return (print_error("Validity Error"));
     }
     // mlx_init
-
     var.info = &info;
     start_mlx(&var);
-
-    return (free_info(&info, 1));
+    free_info(&info, 1);
+    return (EXIT_SUCCESS);
 }

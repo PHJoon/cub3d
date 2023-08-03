@@ -99,7 +99,7 @@ void    display(t_info *info);
 t_flag  parse_file(int fd, t_info *info);
 
 // info_parse_2
-int     parse_info(char *s, t_info *info);
+t_flag  parse_info(char *s, t_info *info);
 int     parse_map(char *s, t_info *info);
 
 

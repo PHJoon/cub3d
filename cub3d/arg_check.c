@@ -15,9 +15,12 @@ static t_flag check_arg_ext(char *arg)
 
     cnt = 5;
     idx = ft_strlen(arg);
-    while (cnt--)
+    while (cnt)
+    {
         if (arg[idx--] != idf[cnt - 1])
             return (FAIL);
+        cnt--;
+    }
     return (SUCCESS);
 }
 

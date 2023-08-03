@@ -24,24 +24,24 @@ int main(int ac, char *av[])
     fd = open(av[1], O_RDONLY);
     if (fd == -1)
         return (print_error("Open Error"));
-    // 메모리 할당: enum 추가 사용 이외에는 추가 x
+    // 구조체 초기화 및 메모리 할당: enum 추가 사용 이외에는 추가 x
     if (init_info(&info) == FAIL)
         return (print_error("Malloc Error"));
     // 인자 파싱
     if (parse_file(fd, &info) == FAIL)
     {
-        free_info(&info, 0);
+        // free_info(&info, 0);
         return (print_error("Parsing Error"));
     }
     // 유효성 체크
     if (!valid_info(&info))
     {
-        free_info(&info, 0);
+        // free_info(&info, 0);
         return (print_error("Validity Error"));
     }
     // mlx_init
     var.info = &info;
     start_mlx(&var);
-    free_info(&info, 1);
+    // free_info(&info, 1);
     return (EXIT_SUCCESS);
 }

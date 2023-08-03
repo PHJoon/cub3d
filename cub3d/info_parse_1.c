@@ -41,11 +41,13 @@ t_flag  parse_file(int fd, t_info *info)
                 return (0);
             break ;
         }
+        //map parse
         if (info->map_flag)
             parse_map(s, info);
         else
         {
-            if (!parse_info(s, info))
+            //wall texture & ceiling & floor color parse
+            if (parse_info(s, info) == FAIL)
                 return (free_str(s, FAIL));
         }
         check_map_flag(info);

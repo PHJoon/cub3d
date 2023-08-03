@@ -12,7 +12,7 @@
 
 #include "main.h"
 
-static int parse_dir(t_info *info, char **tmp)
+static t_flag parse_dir(t_info *info, char **tmp)
 {
     int         i;
     char        *tmp_b;
@@ -24,15 +24,15 @@ static int parse_dir(t_info *info, char **tmp)
         if (!ft_strncmp(tmp[0], dir_list[i], 3))
         {
             if (info->dir_flags[i])
-                return (0);
+                return (FAIL);
             tmp_b = ft_strtrim(tmp[1], " ");
             info->dir[i] = ft_strtrim(tmp_b, "\n");
             free(tmp_b);
             info->dir_flags[i] = 1;
-            return (1);
+            return (SUCCESS);
         }
     }
-    return (0);
+    return (FAIL);
 }
 
 static int parse_fc(t_info *info, char **tmp)
@@ -64,20 +64,20 @@ static int parse_fc(t_info *info, char **tmp)
     return (0);
 }
 
-int parse_info(char *s, t_info *info)
+t_flag  parse_info(char *s, t_info *info)
 {
     char        **tmp;
 
     tmp = ft_split(s, ' ');
     if (!ft_strncmp(tmp[0], "\n", 1))
-        return (free_split(tmp, 1));
+        return (free_split(tmp, SUCCESS));
     if (!(ft_sstrlen(tmp) == 2 || ft_sstrlen(tmp) == 4))
-        return (free_split(tmp, 0));
+        return (free_split(tmp, FAIL));
     if (parse_dir(info, tmp))
-        return (free_split(tmp, 1));
+        return (free_split(tmp, SUCCESS));
     if (parse_fc(info, tmp))
-        return (free_split(tmp, 1));
-    return (free_split(tmp, 0));
+        return (free_split(tmp, SUCCESS));
+    return (free_split(tmp, FAIL));
 }
 
 int parse_map(char *s, t_info *info)

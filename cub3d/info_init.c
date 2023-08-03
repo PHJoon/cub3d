@@ -52,7 +52,7 @@ t_flag init_info(t_info *info)
         info->dir_flags[i] = 0;
         info->fc[i] = 0;
         info->fc_num[i] = 0;
-        if (i < 5)
+        if (i < 4)
             info->dir[i] = 0;
     }
     info->map = NULL;

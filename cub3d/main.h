@@ -21,7 +21,6 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 3
 # endif
@@ -34,7 +33,11 @@
 
 # define ESC 53
 
-
+typedef enum e_flag
+{
+    SUCCESS,
+    FAIL
+}   t_flag;
 
 typedef struct s_info
 {
@@ -80,12 +83,15 @@ size_t	gnl_strlen(char *s);
 int	    gnl_strchr(char *s, char c);
 char	*gnl_strjoin(char **s1, char *s2);
 
+// args_check
+t_flag  check_arg(int ac, char **av);
+
 // info_init
 int    init_info(t_info *info);
 
 // utils
 int ft_sstrlen(char **tmp);
-int print_error(void);
+t_flag print_error(char *msg);
 void    display(t_info *info);
 
 

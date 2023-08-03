@@ -22,12 +22,11 @@ int ft_sstrlen(char **tmp)
     return (i);
 }
 
-int print_error(void)
+t_flag print_error(char *msg)
 {
-    printf("Error\n");
-    return (0);
+    ft_putendl_fd(msg, STDERR_FILENO);
+    return (FAIL);
 }
-
 
 void    display(t_info *info)
 {

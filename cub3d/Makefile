@@ -21,6 +21,7 @@ SRC = free.c \
 	main.c \
 	utils.c \
 	cub3d_mlx.c \
+	arg_check.c
 	
 
 

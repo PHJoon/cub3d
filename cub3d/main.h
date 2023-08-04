@@ -72,7 +72,27 @@ typedef struct s_var
     int     line_l;
     int     endian;
 
-    
+    int     posX;
+    int     posY;
+
+    int     dirX;
+    int     dirY;
+
+    double  planeX;
+    double  planeY;
+
+    int     mapX;
+    int     mapY;
+
+    double  sideDistX;
+    double  sideDistY;
+
+    double  deltaDistX;
+    double  deltaDistY;
+
+    double  perpWallDist;
+
+
     t_info  *info;
 }       t_var;
 

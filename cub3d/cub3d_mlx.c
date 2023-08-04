@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:41:47 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 15:51:24 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:11:20 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,29 @@ void	my_mlx_pixel_put(t_var *var, int x, int y, int color)
 	dst = var->addr + (y * var->line_l + x * (var->bpp / 8));
 	*(unsigned int *)dst = color;
 }
+
+int keyboard_event(int keycode, t_var *var)
+{
+    if (keycode == KEY_A)
+    {
+        if (var->posX)
+    }
+    
+    if (keycode == KEY_S)
+    
+    if (keycode == KEY_D)
+    
+    if (keycode == KEY_W)
+    
+    if (keycode == KEY_LEFT)
+    
+    if (keycode == KEY_RIGHT)
+
+    if (keycode == ESC)
+        exit(0);
+    return (0);
+}
+
 
 void    start_mlx(t_var *var)
 {
@@ -35,6 +58,7 @@ void    start_mlx(t_var *var)
     
     
     // mlx key hook 추가
+    mlx_key_hook(var->win, &key_loop, )
 
     mlx_loop(var->mlx);
 }

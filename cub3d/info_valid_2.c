@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 19:12:41 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/04 16:55:27 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:16:20 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int check_map_args(t_info *info)
                 return (0);
             if (flag == 1)
             {
+                info->player_dir = info->map_test[i][j];
                 info->player_x = i;
                 info->player_y = j;
                 return (1);

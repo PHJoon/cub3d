@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:28 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/04 16:57:53 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:14:59 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ typedef struct s_info
 
     int     height;
     int     width;
+
+    char     player_dir;
 
     int     player_x;
     int     player_y;

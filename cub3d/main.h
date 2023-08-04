@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:28 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/04 16:35:45 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:57:53 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ typedef struct s_info
     int     height;
     int     width;
 
+    int     player_x;
+    int     player_y;
+
 }   t_info;
 
 typedef struct s_var
@@ -115,6 +118,7 @@ t_flag  check_arg(int ac, char **av);
 
 // info_init
 t_flag  init_info(t_info *info);
+void    var_init(t_var *var, t_info *info);
 
 // utils
 int     ft_sstrlen(char **tmp);

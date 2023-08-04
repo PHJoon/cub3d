@@ -6,13 +6,13 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 19:12:41 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 16:12:56 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:55:27 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-static int check_args(char c, int *flag)
+static int check_args(char c, int *flag, int i, int j)
 {
     int     k;
     const char *player = "NSWE";
@@ -45,11 +45,17 @@ int check_map_args(t_info *info)
         j = -1;
         while (++j < info->width)
         {
-            if (!check_args(info->map_test[i][j], &flag))
+            if (!check_args(info->map_test[i][j], &flag, i, j))
                 return (0);
+            if (flag == 1)
+            {
+                info->player_x = i;
+                info->player_y = j;
+                return (1);
+            }
         }
     }
-    return (1);
+    return (0);
 }
 
 static int check_line(char c, int *cnt, int *k, int d)

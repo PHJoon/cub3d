@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_info.c                                        :+:      :+:    :+:   */
+/*   info_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:26:16 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/25 18:04:20 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:57:37 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,22 @@ t_flag init_info(t_info *info)
     info->height = 0;
     info->width = 0;
     return (SUCCESS);
+}
+
+void    var_init(t_var *var, t_info *info)
+{
+    var->info = info;
+    var->posX = info->player_x;
+    var->posY = info->player_y;
+    var->dirX = 0;
+    var->dirY = 0;
+    var->planeX = 0;
+    var->planeY = 0;
+    var->mapX = 0;
+    var->mapY = 0;
+    var->sideDistX = 0;
+    var->sideDistY = 0;
+    var->deltaDistX = 0;
+    var->deltaDistX = 0;
+    var->perpWallDist = 0;
 }

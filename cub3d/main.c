@@ -27,7 +27,7 @@ int main(int ac, char *av[])
     // 구조체 초기화 및 메모리 할당: enum 추가 사용 이외에는 추가 x
     if (init_info(&info) == FAIL)
         return (print_error("Malloc Error"));
-    // 인자 파싱
+    // 인자 파싱: 완료
     if (parse_file(fd, &info) == FAIL)
     {
         // free_info(&info, 0);

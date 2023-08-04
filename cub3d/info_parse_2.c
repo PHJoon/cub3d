@@ -82,13 +82,13 @@ t_flag  parse_info(char *s, t_info *info)
     return (free_split(tmp, FAIL));
 }
 
-int parse_map(char *s, t_info *info)
+t_flag parse_map(char *s, t_info *info)
 {
     char    *tmp;
 
     tmp = ft_strtrim(s, " ");
     if (!ft_strncmp(tmp, "\n", 2))
-        return (free_str(tmp, 1));
+        return (free_str(tmp, FAIL));
     free(tmp);
     if (info->map_before)
     {
@@ -98,5 +98,5 @@ int parse_map(char *s, t_info *info)
     }
     else
         info->map_before = ft_strdup(s);
-    return (1);
+    return (SUCCESS);
 }

@@ -12,7 +12,7 @@
 
 #include "main.h"
 
-int malloc_fail_free(t_info *info, int n)
+static t_flag malloc_fail_free(t_info *info, int n)
 {
     if (n >= 0)
         free(info->dir_flags);
@@ -20,14 +20,14 @@ int malloc_fail_free(t_info *info, int n)
         free(info->dir);
     if (n >= 2)
         free(info->fc);
-    return (0);
+    return (FAIL);
 }
 
-int malloc_var(t_info *info)
+static t_flag malloc_var(t_info *info)
 {
     info->dir_flags = (int *)malloc(sizeof(int) * 6);
     if (!info->dir_flags)
-        return (0);
+        return (FAIL);
     info->dir = (char **)malloc(sizeof(char *) * 4);
     if (!info->dir)
         return (malloc_fail_free(info, 0));
@@ -37,22 +37,22 @@ int malloc_var(t_info *info)
     info->fc_num = (int *)malloc(sizeof(int) * 6);
     if (!info->fc_num)
         return (malloc_fail_free(info, 2));
-    return (1);
+    return (SUCCESS);
 }
 
-int init_info(t_info *info)
+t_flag init_info(t_info *info)
 {
     int i;
 
     i = -1;
-    if (!malloc_var(info))
-        return (0);
+    if (malloc_var(info) == FAIL)
+        return (FAIL);
     while (++i < 6)
     {
         info->dir_flags[i] = 0;
         info->fc[i] = 0;
         info->fc_num[i] = 0;
-        if (i < 5)
+        if (i < 4)
             info->dir[i] = 0;
     }
     info->map = NULL;
@@ -61,5 +61,5 @@ int init_info(t_info *info)
     info->map_flag = 0;
     info->height = 0;
     info->width = 0;
-    return (1);
+    return (SUCCESS);
 }

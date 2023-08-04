@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:28 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 15:52:32 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:35:45 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@
 
 # define WHEEL_UP 4
 # define WHEEL_DOWN 5
+
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_W 13
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
 
 # define ESC 53
 

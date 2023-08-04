@@ -35,7 +35,7 @@ static t_flag parse_dir(t_info *info, char **tmp)
     return (FAIL);
 }
 
-static int parse_fc(t_info *info, char **tmp)
+static t_flag parse_fc(t_info *info, char **tmp)
 {
     int     i;
     char    *tmp_b;
@@ -49,19 +49,19 @@ static int parse_fc(t_info *info, char **tmp)
         {
             tmp_split = ft_split(tmp[1], ',');
             if (info->dir_flags[i + 4])
-                return (free_split(tmp_split, 0));
+                return (free_split(tmp_split, FAIL));
             if (ft_sstrlen(tmp_split) != 3)
-                return (free_split(tmp_split, 0));
+                return (free_split(tmp_split, FAIL));
             info->fc[(i * 3)] = ft_strtrim(tmp_split[0], " ");
             info->fc[(i * 3) + 1] = ft_strtrim(tmp_split[1], " ");
             tmp_b = ft_strtrim(tmp_split[2], "\n");
             info->fc[(i * 3) + 2] = ft_strtrim(tmp_b, " ");
             free(tmp_b);
             info->dir_flags[i + 4] = 1;
-            return (free_split(tmp_split, 1));
+            return (free_split(tmp_split, SUCCESS));
         }
     }
-    return (0);
+    return (FAIL);
 }
 
 t_flag  parse_info(char *s, t_info *info)
@@ -69,13 +69,15 @@ t_flag  parse_info(char *s, t_info *info)
     char        **tmp;
 
     tmp = ft_split(s, ' ');
-    if (!ft_strncmp(tmp[0], "\n", 1))
+    if (!tmp)
+        return (FAIL);
+    if (!ft_strncmp(tmp[0], "\n", 1)) // if there is nothing, it is an error
         return (free_split(tmp, SUCCESS));
-    if (!(ft_sstrlen(tmp) == 2 || ft_sstrlen(tmp) == 4))
+    if (!(ft_sstrlen(tmp) == 2 || ft_sstrlen(tmp) == 4)) // the num of chunk has to be 2 or 4
         return (free_split(tmp, FAIL));
-    if (parse_dir(info, tmp))
+    if (parse_dir(info, tmp) == SUCCESS)
         return (free_split(tmp, SUCCESS));
-    if (parse_fc(info, tmp))
+    if (parse_fc(info, tmp) == SUCCESS)
         return (free_split(tmp, SUCCESS));
     return (free_split(tmp, FAIL));
 }

@@ -38,7 +38,7 @@ t_flag  parse_file(int fd, t_info *info)
         if (!s)
         {
             if (!info->map_flag)
-                return (0);
+                return (FAIL);
             break ;
         }
         //map parse

@@ -34,7 +34,7 @@ int main(int ac, char *av[])
         return (print_error("Parsing Error"));
     }
     // 유효성 체크
-    if (!valid_info(&info))
+    if (valid_info(&info) == FAIL)
     {
         // free_info(&info, 0);
         return (print_error("Validity Error"));

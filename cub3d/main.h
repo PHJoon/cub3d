@@ -120,15 +120,15 @@ t_flag  parse_file(int fd, t_info *info);
 
 // info_parse_2
 t_flag  parse_info(char *s, t_info *info);
-int     parse_map(char *s, t_info *info);
+t_flag  parse_map(char *s, t_info *info);
 
 
 // valid_info
-int valid_info(t_info *info);
+t_flag  valid_info(t_info *info);
 
 // info_valid_2
-int check_map_args(t_info *info);
-int check_map_cross(t_info *info);
+t_flag  check_map_args(t_info *info);
+t_flag  check_map_cross(t_info *info);
 
 
 // free

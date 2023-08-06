@@ -63,7 +63,7 @@ static char    **make_map(t_info *info)
     return (map);
 }
 
-int valid_info(t_info *info)
+t_flag valid_info(t_info *info)
 {
     int i;
     int j;
@@ -77,20 +77,20 @@ int valid_info(t_info *info)
         while (++j < (int)ft_strlen(info->fc[i]))
         {
             if (!ft_isdigit(info->fc[i][j]))
-                return (0);
+                return (FAIL);
         }
         info->fc_num[i] = ft_atoi(info->fc[i]);
         if (info->fc_num[i] < 0 || info->fc_num[i] > 255)
-            return (0);
+            return (FAIL);
     }
     // 맵 2차원 배열로 생성
     info->map = make_map(info);
     info->map_test = make_map(info);
     // 맵 체크
-    if (!check_map_args(info))
-        return (0);
-    if (!check_map_cross(info))
-        return (0);
-    return (1);
+    if (check_map_args(info) == FAIL)
+        return (FAIL);
+    if (check_map_cross(info) == FAIL)
+        return (FAIL);
+    return (SUCCESS);
 
 }

@@ -6,13 +6,13 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 19:12:41 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/04 17:16:20 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:06:18 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-static int check_args(char c, int *flag, int i, int j)
+static int check_args(char c, int *flag)
 {
     int     k;
     const char *player = "NSWE";
@@ -45,13 +45,13 @@ int check_map_args(t_info *info)
         j = -1;
         while (++j < info->width)
         {
-            if (!check_args(info->map_test[i][j], &flag, i, j))
+            if (!check_args(info->map_test[i][j], &flag))
                 return (0);
             if (flag == 1)
             {
                 info->player_dir = info->map_test[i][j];
-                info->player_x = i;
-                info->player_y = j;
+                info->player_x = j;
+                info->player_y = i;
                 return (1);
             }
         }

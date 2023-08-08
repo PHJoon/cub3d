@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:26:16 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/04 17:18:01 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:26:28 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,27 +76,27 @@ void    var_init(t_var *var, t_info *info)
     // 플레이어가 바라보는 방향 벡터 결정
     if (info->player_dir == 'N')
     {
-        var->dirX = 0;
-        var->dirY = 1;
-    }
-    if (info->player_dir == 'S')
-    {
-        var->dirX = 0;
-        var->dirY = -1;
-    }
-    if (info->player_dir == 'W')
-    {
         var->dirX = -1;
         var->dirY = 0;
     }
-    if (info->player_dir == 'E')
+    if (info->player_dir == 'S')
     {
         var->dirX = 1;
         var->dirY = 0;
     }
+    if (info->player_dir == 'W')
+    {
+        var->dirX = 0;
+        var->dirY = -1;
+    }
+    if (info->player_dir == 'E')
+    {
+        var->dirX = 0;
+        var->dirY = 1;
+    }
 
     var->planeX = 0;
-    var->planeY = 0;
+    var->planeY = 0.66;
     var->mapX = 0;
     var->mapY = 0;
     var->sideDistX = 0;

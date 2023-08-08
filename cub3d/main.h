@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:28 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/04 17:14:59 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:25:28 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <math.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 3
@@ -84,11 +85,11 @@ typedef struct s_var
     int     line_l;
     int     endian;
 
-    int     posX;
-    int     posY;
+    double     posX;
+    double     posY;
 
-    int     dirX;
-    int     dirY;
+    double     dirX;
+    double     dirY;
 
     double  planeX;
     double  planeY;

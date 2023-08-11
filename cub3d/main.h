@@ -123,6 +123,10 @@ int free_info(t_info *info, int res);
 void	my_mlx_pixel_put(t_var *var, int x, int y, int color);
 void    start_mlx(t_var *var);
 
+//draw
+void    draw_fc(t_var *var);
 
+//key hook
+void    key_hook_main(t_var *var);
 
 #endif

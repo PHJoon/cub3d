@@ -29,12 +29,13 @@ void    start_mlx(t_var *var)
     &var->line_l, &var->endian);
 
     // draw_map
+    draw_fc(var);
 
     // 매번 이미지 찍어주기
     mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
     
     
     // mlx key hook 추가
-
+    key_hook_main(var);
     mlx_loop(var->mlx);
 }

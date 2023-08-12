@@ -87,9 +87,9 @@ t_flag valid_info(t_info *info)
     info->map = make_map(info);
     info->map_test = make_map(info);
     // 맵 체크
-    if (check_map_args(info) == FAIL)
+    if (check_map_args(info))
         return (FAIL);
-    if (check_map_cross(info) == FAIL)
+    if (check_map_cross(info))
         return (FAIL);
     return (SUCCESS);
 

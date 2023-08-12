@@ -14,7 +14,7 @@
 
 static t_flag check_args(char c, int *flag)
 {
-    int     k;
+    int k;
     const char *player = "NSWE";
 
     k = -1;
@@ -45,18 +45,18 @@ t_flag check_map_args(t_info *info)
         j = -1;
         while (++j < info->width)
         {
-            if (!check_args(info->map_test[i][j], &flag))
-                return (0);
+            if (check_args(info->map_test[i][j], &flag))
+                return (FAIL);
             if (flag == 1)
             {
                 info->player_dir = info->map_test[i][j];
                 info->player_x = j;
                 info->player_y = i;
-                return (1);
+                return (SUCCESS);
             }
         }
     }
-    return (0);
+    return (FAIL);
 }
 
 static int check_line(char c, int *cnt, int *k, int d)
@@ -70,7 +70,7 @@ static int check_line(char c, int *cnt, int *k, int d)
     return (0);
 }
 
-static void    check_cross(t_info *info, int i, int j, int *cnt)
+static void check_cross(t_info *info, int i, int j, int *cnt)
 {
     int k;
 
@@ -78,22 +78,22 @@ static void    check_cross(t_info *info, int i, int j, int *cnt)
     while (--k > -1 && info->map_test[k][j] != ' ')
     {
         if (check_line(info->map_test[k][j], cnt, &k, i))
-            break ;
+            break;
     }
     while (++k < info->height && info->map_test[k][j] != ' ')
     {
         if (check_line(info->map_test[k][j], cnt, &k, j))
-            break ;
+            break;
     }
     while (--k > -1 && info->map_test[i][k] != ' ')
     {
         if (check_line(info->map_test[i][k], cnt, &k, j))
-            break ;
+            break;
     }
     while (++k < info->width && info->map_test[i][k] != ' ')
     {
         if (check_line(info->map_test[i][k], cnt, &k, j))
-            break ;
+            break;
     }
 }
 

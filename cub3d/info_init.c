@@ -70,8 +70,8 @@ t_flag init_info(t_info *info)
 void var_init(t_var *var, t_info *info)
 {
     var->info = info;
-    var->posX = info->player_x;
-    var->posY = info->player_y;
+    var->posX = (double)info->player_x;
+    var->posY = (double)info->player_y;
 
     // 플레이어가 바라보는 방향 벡터 결정
     if (info->player_dir == 'N')

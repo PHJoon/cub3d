@@ -20,33 +20,6 @@ void my_mlx_pixel_put(t_var *var, int x, int y, int color)
     *(unsigned int *)dst = color;
 }
 
-// 키보드 이벤트 회전행렬 적용
-int keyboard_event(int keycode, t_var *var)
-{
-    (void)var;
-    if (keycode == KEY_A)
-    {
-    }
-    if (keycode == KEY_S)
-    {
-    }
-    if (keycode == KEY_D)
-    {
-    }
-    if (keycode == KEY_W)
-    {
-    }
-    if (keycode == KEY_LEFT)
-    {
-    }
-    if (keycode == KEY_RIGHT)
-    {
-    }
-    if (keycode == ESC)
-        exit(0);
-    return (0);
-}
-
 void    set_camera_raydir(t_var *var, int x)
 {
     var->cameraX = 2 * x / (double)WIDTH - 1;
@@ -179,31 +152,6 @@ void draw_map(t_var *var)
     }
 }
 
-static int create_trgb(int t, int r, int g, int b)
-{
-    return (t << 24 | r << 16 | g << 8 | b);
-}
-
-// 천장 바닥 색칠하기
-void draw_floor_ceiling(t_var *var)
-{
-    int x;
-    int y;
-
-    y = -1;
-    while (++y < HEIGHT)
-    {
-        x = -1;
-        while (++x < WIDTH)
-        {
-            if (y <= HEIGHT / 2)
-                my_mlx_pixel_put(var, x, y, create_trgb(0, 255, 0, 80));
-            else
-                my_mlx_pixel_put(var, x, y, create_trgb(0, 255, 255, 40));
-        }
-    }
-}
-
 void start_mlx(t_var *var)
 {
     var->mlx = mlx_init();
@@ -211,9 +159,6 @@ void start_mlx(t_var *var)
     var->img = mlx_new_image(var->mlx, WIDTH, HEIGHT);
     var->addr = mlx_get_data_addr(var->img, &var->bpp,
                                   &var->line_l, &var->endian);
-
-    // 천장 바닥 먼저 그리기
-    draw_floor_ceiling(var);
 
     // draw_map
     draw_fc(var);

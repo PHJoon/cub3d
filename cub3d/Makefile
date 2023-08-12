@@ -23,7 +23,9 @@ SRC = free.c \
 	cub3d_mlx.c \
 	arg_check.c \
 	mlx_draw_fc.c \
-	mlx_key_hook.c
+	mlx_key_hook.c \
+	mlx_events_1.c \
+	mlx_events_2.c
 	
 
 

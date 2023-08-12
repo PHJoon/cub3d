@@ -38,8 +38,10 @@
 # define KEY_W 13
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
-
 # define ESC 53
+
+# define ROT_SPEED 0.10
+# define MOV_SPEED 0.10
 
 typedef enum e_flag
 {
@@ -175,5 +177,11 @@ void    draw_fc(t_var *var);
 
 //key hook
 void    key_hook_main(t_var *var);
+void    key_move_left(t_var *var);
+void    key_move_right(t_var *var);
+void    key_move_forward(t_var *var);
+void    key_move_backward(t_var *var);
+void    key_rotate_left(t_var *var);
+void    key_rotate_right(t_var *var);
 
 #endif

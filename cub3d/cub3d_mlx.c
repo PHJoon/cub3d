@@ -169,6 +169,5 @@ void start_mlx(t_var *var)
 
     // mlx key hook 추가
     key_hook_main(var);
-    // mlx_key_hook(var->win, &keyboard_event, (void *)var);
     mlx_loop(var->mlx);
 }

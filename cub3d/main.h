@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:28 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 15:52:32 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:25:28 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,24 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <math.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 3
 # endif
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 600
+# define HEIGHT 400
 
 # define WHEEL_UP 4
 # define WHEEL_DOWN 5
+
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_W 13
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
 
 # define ESC 53
 
@@ -60,6 +68,11 @@ typedef struct s_info
     int     height;
     int     width;
 
+    char    player_dir;
+
+    int     player_x;
+    int     player_y;
+
 }   t_info;
 
 typedef struct s_var
@@ -72,17 +85,30 @@ typedef struct s_var
     int     line_l;
     int     endian;
 
-    int     posX;
-    int     posY;
 
-    int     dirX;
-    int     dirY;
+    double  cameraX;
+
+    int  mapX;
+    int  mapY;
+
+
+    int     side;
+
+    double  posX;
+    double  posY;
+
+    double  dirX;
+    double  dirY;
 
     double  planeX;
     double  planeY;
 
-    int     mapX;
-    int     mapY;
+    double  rayDirX;
+    double  rayDirY;
+
+    int     stepX;
+    int     stepY;
+
 
     double  sideDistX;
     double  sideDistY;
@@ -108,6 +134,7 @@ t_flag  check_arg(int ac, char **av);
 
 // info_init
 t_flag  init_info(t_info *info);
+void    var_init(t_var *var, t_info *info);
 
 // utils
 int     ft_sstrlen(char **tmp);

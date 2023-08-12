@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 19:12:41 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 16:12:56 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:06:18 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,18 @@ t_flag check_map_args(t_info *info)
         j = -1;
         while (++j < info->width)
         {
-            if (check_args(info->map_test[i][j], &flag) == FAIL)
-                return (FAIL);
+            if (!check_args(info->map_test[i][j], &flag))
+                return (0);
+            if (flag == 1)
+            {
+                info->player_dir = info->map_test[i][j];
+                info->player_x = j;
+                info->player_y = i;
+                return (1);
+            }
         }
     }
-    return (SUCCESS);
+    return (0);
 }
 
 static int check_line(char c, int *cnt, int *k, int d)

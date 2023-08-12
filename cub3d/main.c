@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:30 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 16:13:09 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/08 16:22:49 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ int main(int ac, char *av[])
         // free_info(&info, 0);
         return (print_error("Validity Error"));
     }
+
+    // 구조체 초기화
+    var_init(&var, &info);
+
     // mlx_init
-    var.info = &info;
     start_mlx(&var);
     // free_info(&info, 1);
     return (EXIT_SUCCESS);

@@ -47,7 +47,20 @@ int keyboard_event(int keycode, t_var *var)
     return (0);
 }
 
-void calc_step_dir(t_var *var)
+void    set_camera_raydir(t_var *var, int x)
+{
+    var->cameraX = 2 * x / (double)WIDTH - 1;
+    var->rayDirX = var->dirX + var->planeX * var->cameraX;
+    var->rayDirY = var->dirY + var->planeY * var->cameraX;
+
+    var->mapX = (int)var->posX;
+    var->mapY = (int)var->posY;
+
+    var->deltaDistX = fabs(1 / var->rayDirX);
+    var->deltaDistY = fabs(1 / var->rayDirY);
+}
+
+void    calc_step_dir(t_var *var)
 {
     if (var->rayDirX < 0)
     {
@@ -156,23 +169,13 @@ void draw_map(t_var *var)
 {
     int x;
 
-    x = 0;
-    while (x < WIDTH)
+    x = -1;
+    while (++x < WIDTH)
     {
-        var->cameraX = 2 * x / (double)WIDTH - 1;
-        var->rayDirX = var->dirX + var->planeX * var->cameraX;
-        var->rayDirY = var->dirY + var->planeY * var->cameraX;
-
-        var->mapX = (int)var->posX;
-        var->mapY = (int)var->posY;
-
-        var->deltaDistX = fabs(1 / var->rayDirX);
-        var->deltaDistY = fabs(1 / var->rayDirY);
-
+        set_camera_raydir(var, x);
         calc_step_dir(var);
         calc_wall_hit(var);
         draw_wall(var, x);
-        x++;
     }
 }
 

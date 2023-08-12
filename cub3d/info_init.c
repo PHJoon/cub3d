@@ -78,14 +78,14 @@ void var_init(t_var *var, t_info *info)
     {
         var->dirX = 0;
         var->dirY = -1;
-        var->planeX = -1;
+        var->planeX = -0.66;
         var->planeY = 0;
     }
     if (info->player_dir == 'S')
     {
         var->dirX = 0;
         var->dirY = 1;
-        var->planeX = 1;
+        var->planeX = 0.66;
         var->planeY = 0;
     }
     if (info->player_dir == 'W')
@@ -93,14 +93,14 @@ void var_init(t_var *var, t_info *info)
         var->dirX = -1;
         var->dirY = 0;
         var->planeX = 0;
-        var->planeY = -1;
+        var->planeY = -0.66;
     }
     if (info->player_dir == 'E')
     {
         var->dirX = 1;
         var->dirY = 0;
         var->planeX = 0;
-        var->planeY = 1;
+        var->planeY = 0.66;
     }
 
     var->cameraX = 0;

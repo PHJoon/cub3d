@@ -26,8 +26,8 @@
 #  define BUFFER_SIZE 3
 # endif
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 600
+# define HEIGHT 400
 
 # define WHEEL_UP 4
 # define WHEEL_DOWN 5
@@ -68,7 +68,7 @@ typedef struct s_info
     int     height;
     int     width;
 
-    char     player_dir;
+    char    player_dir;
 
     int     player_x;
     int     player_y;
@@ -85,17 +85,30 @@ typedef struct s_var
     int     line_l;
     int     endian;
 
-    double     posX;
-    double     posY;
 
-    double     dirX;
-    double     dirY;
+    double  cameraX;
+
+    int  mapX;
+    int  mapY;
+
+
+    int     side;
+
+    double  posX;
+    double  posY;
+
+    double  dirX;
+    double  dirY;
 
     double  planeX;
     double  planeY;
 
-    int     mapX;
-    int     mapY;
+    double  rayDirX;
+    double  rayDirY;
+
+    int     stepX;
+    int     stepY;
+
 
     double  sideDistX;
     double  sideDistY;

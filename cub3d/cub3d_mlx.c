@@ -216,13 +216,14 @@ void start_mlx(t_var *var)
     draw_floor_ceiling(var);
 
     // draw_map
+    draw_fc(var);
     draw_map(var);
 
     // 매번 이미지 찍어주기
     mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
 
     // mlx key hook 추가
+    key_hook_main(var);
     // mlx_key_hook(var->win, &keyboard_event, (void *)var);
-
     mlx_loop(var->mlx);
 }

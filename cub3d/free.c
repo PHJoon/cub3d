@@ -55,7 +55,6 @@ int free_info(t_info *info, int res)
     free(info->dir);
     free(info->dir_flags);
     free(info->fc_num);
-
     if (!info->map_before)
         free(info->map_before);
     if (!info->map)

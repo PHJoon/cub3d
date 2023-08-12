@@ -12,27 +12,27 @@
 
 #include "main.h"
 
-static int check_args(char c, int *flag)
+static t_flag check_args(char c, int *flag)
 {
     int     k;
     const char *player = "NSWE";
 
     k = -1;
     if (!(c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == ' '))
-        return (0);
+        return (FAIL);
     while (++k < 4 && c == player[k])
     {
         if (c == player[k])
         {
             if (*flag)
-                return (0);
+                return (FAIL);
             *flag = 1;
         }
     }
-    return (1);
+    return (SUCCESS);
 }
 
-int check_map_args(t_info *info)
+t_flag check_map_args(t_info *info)
 {
     int i;
     int j;
@@ -97,7 +97,7 @@ static void    check_cross(t_info *info, int i, int j, int *cnt)
     }
 }
 
-int check_map_cross(t_info *info)
+t_flag check_map_cross(t_info *info)
 {
     int i;
     int j;
@@ -114,11 +114,11 @@ int check_map_cross(t_info *info)
                 cnt = 0;
                 check_cross(info, i, j, &cnt);
                 if (cnt != 4)
-                    return (0);
+                    return (FAIL);
                 else
                     info->map_test[i][j] = '1';
             }
         }
     }
-    return (1);
+    return (SUCCESS);
 }

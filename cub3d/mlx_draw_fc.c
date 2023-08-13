@@ -49,7 +49,7 @@ static int color_grad(int color1, int color2, double t) {
     int g = (int)(g1 * (1 - t) + g2 * t);
     int b = (int)(b1 * (1 - t) + b2 * t);
 
-    return (r << 16) | (g << 8) | b;
+    return ((r << 16) | (g << 8) | b);
 }
 
 void draw_fc(t_var *var)

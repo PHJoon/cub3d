@@ -17,7 +17,7 @@ static t_flag parse_dir(t_info *info, char **tmp)
     int         i;
     char        *tmp_b;
     const char  *dir_list[4] = {"NO", "SO", "WE", "EA"};
-    
+
     i = -1;
     while (++i < 4)
     {

@@ -14,40 +14,40 @@
 
 void	key_move_left(t_var *var)
 {
-	if (var->info->map[(int)(var->posX - var->dirY * MOV_SPEED)]\
-		[(int)var->posY] == '0')
+	if (var->info->map[(int)(var->posY - var->dirY * MOV_SPEED)]\
+		[(int)var->posX] == '0')
 		var->posX -= var->dirY * MOV_SPEED;
-	if (var->info->map[(int)var->posX]\
-		[(int)(var->posY + var->dirX * MOV_SPEED)] == '0')
+	if (var->info->map[(int)var->posY]\
+		[(int)(var->posX + var->dirX * MOV_SPEED)] == '0')
 		var->posY += var->dirX * MOV_SPEED;
 }
 
 void    key_move_right(t_var *var)
 {
-	if (var->info->map[(int)(var->posX + var->dirY * MOV_SPEED)]\
-		[(int)var->posY] == '0')
+	if (var->info->map[(int)(var->posY + var->dirY * MOV_SPEED)]\
+		[(int)var->posX] == '0')
     	var->posX += var->dirY * MOV_SPEED;
-	if (var->info->map[(int)var->posX]\
-		[(int)(var->posY - var->dirX * MOV_SPEED)] == '0')
+	if (var->info->map[(int)var->posY]\
+		[(int)(var->posX - var->dirX * MOV_SPEED)] == '0')
     	var->posY -= var->dirX * MOV_SPEED;
 }
 
 void    key_move_forward(t_var *var)
 {
-	if (var->info->map[(int)(var->posX + var->dirX * MOV_SPEED)]\
-		[(int)var->posY] == '0')
+	if (var->info->map[(int)(var->posY + var->dirY * MOV_SPEED)]\
+		[(int)var->posX] == '0')
 		var->posX += var->dirX * MOV_SPEED;
-	if (var->info->map[(int)var->posX]\
-		[(int)(var->posY + var->dirY * MOV_SPEED)] == '0')
+	if (var->info->map[(int)var->posY]\
+		[(int)(var->posX + var->dirX * MOV_SPEED)] == '0')
 		var->posY += var->dirY * MOV_SPEED;
 }
 
 void    key_move_backward(t_var *var)
 {
-	if (var->info->map[(int)(var->posX - var->dirX * MOV_SPEED)]\
-		[(int)var->posY] == '0')
+	if (var->info->map[(int)(var->posY - var->dirY * MOV_SPEED)]\
+		[(int)var->posX] == '0')
 		var->posX -= var->dirX * MOV_SPEED;
-	if (var->info->map[(int)var->posX]\
-		[(int)(var->posY - var->dirY * MOV_SPEED)] == '0')
+	if (var->info->map[(int)var->posY]\
+		[(int)(var->posX - var->dirX * MOV_SPEED)] == '0')
 		var->posY -= var->dirY * MOV_SPEED;
 }

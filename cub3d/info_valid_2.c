@@ -52,6 +52,7 @@ t_flag check_map_args(t_info *info)
                 info->player_dir = info->map_test[i][j];
                 info->player_x = j;
                 info->player_y = i;
+                info->map[i][j] = '0';
                 return (SUCCESS);
             }
         }

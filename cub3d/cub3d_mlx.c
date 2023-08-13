@@ -152,22 +152,10 @@ void draw_map(t_var *var)
     }
 }
 
-void start_mlx(t_var *var)
+int	start_mlx(t_var *var)
 {
-    var->mlx = mlx_init();
-    var->win = mlx_new_window(var->mlx, WIDTH, HEIGHT, "cub3d");
-    var->img = mlx_new_image(var->mlx, WIDTH, HEIGHT);
-    var->addr = mlx_get_data_addr(var->img, &var->bpp,
-                                  &var->line_l, &var->endian);
-
-    // draw_map
-    draw_fc(var);
-    draw_map(var);
-
-    // 매번 이미지 찍어주기
-    mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
-
-    // mlx key hook 추가
-    key_hook_main(var);
-    mlx_loop(var->mlx);
+	draw_fc(var);
+	draw_map(var);
+	mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
+	return (0);
 }

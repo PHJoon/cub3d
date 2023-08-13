@@ -12,6 +12,16 @@
 
 #include "main.h"
 
+void	mlx_total_init(t_var *var)
+{
+	var->mlx = mlx_init();
+	var->win = mlx_new_window(var->mlx, WIDTH, HEIGHT, "cub3d");
+	var->img = mlx_new_image(var->mlx, WIDTH, HEIGHT);
+	var->addr = mlx_get_data_addr(var->img, &var->bpp, \
+					&var->line_l, &var->endian);
+	// init_xpm_files(var);
+}
+
 static t_flag malloc_fail_free(t_info *info, int n)
 {
     if (n >= 0)

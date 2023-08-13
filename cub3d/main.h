@@ -40,88 +40,88 @@
 # define KEY_RIGHT 124
 # define ESC 53
 
-# define ROT_SPEED 0.10
-# define MOV_SPEED 0.10
+# define ROT_SPEED 0.16
+# define MOV_SPEED 0.20
 
 typedef enum e_flag
 {
-    SUCCESS,
-    FAIL
+	SUCCESS,
+	FAIL
 }   t_flag;
 
 typedef struct s_info
 {
-    
-    int     *dir_flags; // n, s, w, e, f, c
 
-    int     map_flag;
+	int     *dir_flags; // n, s, w, e, f, c
 
-    char    **dir; // 4
-    
-    char    **fc; //6
-    
-    int     *fc_num; // 6
+	int     map_flag;
 
-    char    *map_before;
+	char    **dir; // 4
 
-    char    **map;
-    char    **map_test;
+	char    **fc; //6
 
-    int     height;
-    int     width;
+	int     *fc_num; // 6
 
-    char    player_dir;
+	char    *map_before;
 
-    int     player_x;
-    int     player_y;
+	char    **map;
+	char    **map_test;
+
+	int     height;
+	int     width;
+
+	char    player_dir;
+
+	int     player_x;
+	int     player_y;
 
 }   t_info;
 
 typedef struct s_var
 {
-    void    *mlx;
-    void    *win;
-    void    *img;
-    char    *addr;
-    int     bpp;
-    int     line_l;
-    int     endian;
+	void    *mlx;
+	void    *win;
+	void    *img;
+	char    *addr;
+	int     bpp;
+	int     line_l;
+	int     endian;
 
 
-    double  cameraX;
+	double  cameraX;
 
-    int  mapX;
-    int  mapY;
-
-
-    int     side;
-
-    double  posX;
-    double  posY;
-
-    double  dirX;
-    double  dirY;
-
-    double  planeX;
-    double  planeY;
-
-    double  rayDirX;
-    double  rayDirY;
-
-    int     stepX;
-    int     stepY;
+	int  mapX;
+	int  mapY;
 
 
-    double  sideDistX;
-    double  sideDistY;
+	int     side;
 
-    double  deltaDistX;
-    double  deltaDistY;
+	double  posX;
+	double  posY;
 
-    double  perpWallDist;
+	double  dirX;
+	double  dirY;
+
+	double  planeX;
+	double  planeY;
+
+	double  rayDirX;
+	double  rayDirY;
+
+	int     stepX;
+	int     stepY;
 
 
-    t_info  *info;
+	double  sideDistX;
+	double  sideDistY;
+
+	double  deltaDistX;
+	double  deltaDistY;
+
+	double  perpWallDist;
+
+
+	t_info  *info;
 }       t_var;
 
 
@@ -169,19 +169,21 @@ int free_info(t_info *info, int res);
 
 
 // cub3d_mlx
+void	mlx_total_init(t_var *var);
 void	my_mlx_pixel_put(t_var *var, int x, int y, int color);
-void    start_mlx(t_var *var);
+int		start_mlx(t_var *var);
+void	init_xpm_files(t_var *var);
 
 //draw
 void    draw_fc(t_var *var);
 
 //key hook
-void    key_hook_main(t_var *var);
-void    key_move_left(t_var *var);
-void    key_move_right(t_var *var);
-void    key_move_forward(t_var *var);
-void    key_move_backward(t_var *var);
-void    key_rotate_left(t_var *var);
-void    key_rotate_right(t_var *var);
+void	key_hook_main(t_var *var);
+void	key_move_left(t_var *var);
+void	key_move_right(t_var *var);
+void	key_move_forward(t_var *var);
+void	key_move_backward(t_var *var);
+void	key_rotate_left(t_var *var);
+void	key_rotate_right(t_var *var);
 
 #endif

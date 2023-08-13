@@ -1,21 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_key_hook.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joon-lee <joon-lee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/13 14:14:44 by joon-lee          #+#    #+#             */
+/*   Updated: 2023/08/13 14:14:48 by joon-lee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "main.h"
 
 static int	key_hook_sub(int keycode, t_var *var)
 {
-	mlx_destroy_image(var->mlx, var->img);
+	printf("keycode: %d\n", keycode);
 	if (keycode == KEY_A)
 		key_move_left(var);
-	else if (keycode == KEY_W)
+	if (keycode == KEY_W)
 		key_move_forward(var);
-	else if (keycode == KEY_S)
+	if (keycode == KEY_S)
 		key_move_backward(var);
-	else if (keycode == KEY_D)
+	if (keycode == KEY_D)
 		key_move_right(var);
-	else if (keycode == KEY_LEFT)
+	if (keycode == KEY_LEFT)
 		key_rotate_left(var);
-	else if (keycode == KEY_RIGHT)
+	if (keycode == KEY_RIGHT)
 		key_rotate_right(var);
-	mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
 	return (0);
 }
 

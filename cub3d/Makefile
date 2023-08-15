@@ -25,8 +25,8 @@ SRC = free.c \
 	mlx_draw_fc.c \
 	mlx_key_hook.c \
 	mlx_events_1.c \
-	mlx_events_2.c
-	
+	mlx_events_2.c \
+	mlx_texture.c
 
 
 OBJ = $(SRC:.c=.o)

@@ -19,7 +19,7 @@ void	mlx_total_init(t_var *var)
 	var->img = mlx_new_image(var->mlx, WIDTH, HEIGHT);
 	var->addr = mlx_get_data_addr(var->img, &var->bpp, \
 					&var->line_l, &var->endian);
-	// init_xpm_files(var);
+	init_xpm_files(var);
 }
 
 static t_flag malloc_fail_free(t_info *info, int n)
@@ -30,6 +30,8 @@ static t_flag malloc_fail_free(t_info *info, int n)
         free(info->dir);
     if (n >= 2)
         free(info->fc);
+    if (n >= 3)
+        free(info->fc_num);
     return (FAIL);
 }
 
@@ -47,6 +49,9 @@ static t_flag malloc_var(t_info *info)
     info->fc_num = (int *)malloc(sizeof(int) * 6);
     if (!info->fc_num)
         return (malloc_fail_free(info, 2));
+    info->text_arr = (t_text *)malloc(sizeof(t_text) * 4);
+    if (!info->text_arr)
+        return (malloc_fail_free(info, 3));
     return (SUCCESS);
 }
 

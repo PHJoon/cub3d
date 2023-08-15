@@ -29,8 +29,16 @@
 # define WIDTH 600
 # define HEIGHT 400
 
+# define TEX_WIDTH 64
+
 # define WHEEL_UP 4
 # define WHEEL_DOWN 5
+
+# define NO 0
+# define SO 1
+# define WE 2
+# define EA 3
+
 
 # define KEY_A 0
 # define KEY_S 1
@@ -48,6 +56,15 @@ typedef enum e_flag
 	SUCCESS,
 	FAIL
 }   t_flag;
+
+typedef struct s_text
+{
+	void    *img;
+	char    *addr;
+	int     bpp;
+	int     line_l;
+	int     endian;
+}   t_text;
 
 typedef struct s_info
 {
@@ -75,6 +92,8 @@ typedef struct s_info
 	int     player_x;
 	int     player_y;
 
+	t_text  *text_arr;
+
 }   t_info;
 
 typedef struct s_var
@@ -95,6 +114,10 @@ typedef struct s_var
 
 
 	int     side;
+	int		color;
+	int		wall_tex_x;
+	int		wall_tex_y;
+	int		wall_x;	
 
 	double  posX;
 	double  posY;
@@ -137,6 +160,7 @@ t_flag  check_arg(int ac, char **av);
 // info_init
 t_flag  init_info(t_info *info);
 void    var_init(t_var *var, t_info *info);
+void	init_xpm_files(t_var *var);
 
 // utils
 int     ft_sstrlen(char **tmp);

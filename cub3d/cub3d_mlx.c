@@ -112,6 +112,22 @@ int get_wall_color(t_var *var)
     return (color);
 }
 
+// void    calc_text(t_var *var)
+// {
+//     if (var->side == 0)
+//         var->wall_x = var->posY + var->perpWallDist * var->rayDirY;
+//     else
+//         var->wall_x = var->posX + var->perpWallDist * var->rayDirX;
+//     var->wall_x -= floor((var->wall_x));
+//     var->wall_tex_x = (int)(var->wall_x * (double)TEX_WIDTH);
+//     if (var->side == 0 && var->rayDirX > 0)
+//         var->wall_tex_x = TEX_WIDTH - var->wall_tex_x - 1;
+//     if (var->side == 1 && var->rayDirY < 0)
+//         var->wall_tex_x = TEX_WIDTH - var->wall_tex_x - 1;
+//     var->info->step = 1.0 * TEX_HEIGHT / (int)(HEIGHT / var->perpWallDist);
+//     var->info->tex_pos = (drawStart - HEIGHT / 2 + lineHeight / 2) * var->info->step;
+// }
+
 void draw_wall(t_var *var, int x)
 {
     int lineHeight;
@@ -127,6 +143,7 @@ void draw_wall(t_var *var, int x)
     if (drawEnd >= HEIGHT)
         drawEnd = HEIGHT - 1;
 
+    // calc_text(var);
     color = get_wall_color(var);
 
     int y = drawStart;

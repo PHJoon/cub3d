@@ -85,73 +85,72 @@ void calc_wall_hit(t_var *var)
         var->perpWallDist = var->sideDistY - var->deltaDistY;
 }
 
-int get_wall_color(t_var *var)
+int get_wall_color(t_var *var, int dir)
 {
-    int color;
+    int 	color;
+	int 	wall_x;
+	int 	wall_y;
+	t_text text_one;
 
     color = 0;
-    if (var->info->map[var->mapY][var->mapX] == '1')
-    {
-        if (var->side == 0)
-        {
-            // east
-            color = 0xAAB9FF;
-            // west
-            if (var->rayDirX > 0)
-                color = 0xE6FFE6;
-        }
-        else
-        {
-            // south
-            color = 0xFF8E99;
-            // north
-            if (var->rayDirY < 0)
-                color = 0xFF9614;
-        }
-    }
+	wall_x = var->wall_tex_x;
+	wall_y = var->wall_tex_y;
+	text_one = var->info->text_arr[dir];
+	color = *(text_one.addr + (wall_y * text_one.line_l + wall_x * (text_one.bpp / 8)));
     return (color);
 }
 
-// void    calc_text(t_var *var)
-// {
-//     if (var->side == 0)
-//         var->wall_x = var->posY + var->perpWallDist * var->rayDirY;
-//     else
-//         var->wall_x = var->posX + var->perpWallDist * var->rayDirX;
-//     var->wall_x -= floor((var->wall_x));
-//     var->wall_tex_x = (int)(var->wall_x * (double)TEX_WIDTH);
-//     if (var->side == 0 && var->rayDirX > 0)
-//         var->wall_tex_x = TEX_WIDTH - var->wall_tex_x - 1;
-//     if (var->side == 1 && var->rayDirY < 0)
-//         var->wall_tex_x = TEX_WIDTH - var->wall_tex_x - 1;
-//     var->info->step = 1.0 * TEX_HEIGHT / (int)(HEIGHT / var->perpWallDist);
-//     var->info->tex_pos = (drawStart - HEIGHT / 2 + lineHeight / 2) * var->info->step;
-// }
+void    calc_text(t_var *var)
+{
+    if (var->side == 0)
+        var->wall_x = var->posY + var->perpWallDist * var->rayDirY;
+    else
+        var->wall_x = var->posX + var->perpWallDist * var->rayDirX;
+    var->wall_x -= floor((var->wall_x));
+    var->wall_tex_x = (int)(var->wall_x * (double)TEX_WIDTH);
+    if (var->side == 0 && var->rayDirX > 0)
+        var->wall_tex_x = TEX_WIDTH - var->wall_tex_x - 1;
+    if (var->side == 1 && var->rayDirY < 0)
+        var->wall_tex_x = TEX_WIDTH - var->wall_tex_x - 1;
+    var->stepY = 1.0 * TEX_HEIGHT / (int)(HEIGHT / var->perpWallDist);
+    var->tex_pos = (var->drawStart - HEIGHT / 2 + (int)(HEIGHT / \
+						var->perpWallDist) / 2) * var->stepY;
+}
 
 void draw_wall(t_var *var, int x)
 {
-    int lineHeight;
-    int color;
-
-    lineHeight = (int)(HEIGHT / var->perpWallDist);
-
-    int drawStart = -lineHeight / 2 + HEIGHT / 2;
-    if (drawStart < 0)
-        drawStart = 0;
-
-    int drawEnd = lineHeight / 2 + HEIGHT / 2;
-    if (drawEnd >= HEIGHT)
-        drawEnd = HEIGHT - 1;
+    int	color;
+	int	idx;
 
     // calc_text(var);
-    color = get_wall_color(var);
-
-    int y = drawStart;
-    while (y <= drawEnd)
+    idx = var->drawStart;
+    while (idx <= var->drawEnd)
     {
-        my_mlx_pixel_put(var, x, y, color);
-        y++;
+		var->wall_tex_y = (int)var->tex_pos;
+		if (var->side == 0 && var->rayDirX > 0)
+			color = get_wall_color(var, NO);
+		if (var->side == 0 && var->rayDirX < 0)
+			color = get_wall_color(var, SO);
+		if (var->side == 1 && var->rayDirY > 0)
+			color = get_wall_color(var, WE);
+		if (var->side == 1 && var->rayDirY < 0)
+			color = get_wall_color(var, EA);
+        my_mlx_pixel_put(var, x, idx, color);
+        idx++;
     }
+}
+
+void set_draw_unit(t_var *var)
+{
+    int lineHeight;
+
+    lineHeight = (int)(HEIGHT / var->perpWallDist);
+	var->drawStart = -lineHeight / 2 + HEIGHT / 2;
+	if (var->drawStart < 0)
+		var->drawStart = 0;
+	var->drawEnd = lineHeight / 2 + HEIGHT / 2;
+	if (var->drawEnd >= HEIGHT)
+		var->drawEnd = HEIGHT - 1;
 }
 
 // map 그리기
@@ -165,7 +164,8 @@ void draw_map(t_var *var)
         set_camera_raydir(var, x);
         calc_step_dir(var);
         calc_wall_hit(var);
-        draw_wall(var, x);
+        set_draw_unit(var);
+		draw_wall(var, x);
     }
 }
 

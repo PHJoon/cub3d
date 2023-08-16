@@ -30,6 +30,7 @@
 # define HEIGHT 400
 
 # define TEX_WIDTH 64
+# define TEX_HEIGHT 64
 
 # define WHEEL_UP 4
 # define WHEEL_DOWN 5
@@ -112,12 +113,15 @@ typedef struct s_var
 	int  mapX;
 	int  mapY;
 
+	int		drawStart;
+	int		drawEnd;
 
 	int     side;
 	int		color;
 	int		wall_tex_x;
 	int		wall_tex_y;
-	int		wall_x;	
+	int		wall_x;
+	int		tex_pos;
 
 	double  posX;
 	double  posY;

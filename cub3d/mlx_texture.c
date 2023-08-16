@@ -1,6 +1,6 @@
 #include "main.h"
 
-static void set_dir_xpm (t_var *var, int toward)
+static void set_dir_xpm(t_var *var, int toward)
 {
     int     tmp;
     t_text  *tex;

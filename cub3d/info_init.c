@@ -55,6 +55,15 @@ static t_flag malloc_var(t_info *info)
     return (SUCCESS);
 }
 
+static void init_text(t_text *text)
+{
+    text->img = NULL;
+    text->addr = NULL;
+    text->bpp = 0;
+    text->line_l = 0;
+    text->endian = 0;
+}
+
 t_flag init_info(t_info *info)
 {
     int i;
@@ -68,7 +77,10 @@ t_flag init_info(t_info *info)
         info->fc[i] = 0;
         info->fc_num[i] = 0;
         if (i < 4)
+        {
             info->dir[i] = 0;
+            init_text(&info->text_arr[i]);
+        }
     }
     info->map = NULL;
     info->map_test = NULL;

@@ -85,18 +85,17 @@ void calc_wall_hit(t_var *var)
         var->perpWallDist = var->sideDistY - var->deltaDistY;
 }
 
-int get_wall_color(t_var *var, int dir)
+unsigned int get_wall_color(t_var *var, int dir)
 {
-    int 	color;
-	int 	wall_x;
-	int 	wall_y;
-	t_text text_one;
+    unsigned int 	color;
+	int 	        wall_x;
+	int 	        wall_y;
+	t_text          text_one;
 
-    color = 0;
 	wall_x = var->wall_tex_x;
 	wall_y = var->wall_tex_y;
 	text_one = var->info->text_arr[dir];
-	color = *(text_one.addr + (wall_y * text_one.line_l + wall_x * (text_one.bpp / 8)));
+	color = *(unsigned int *)(text_one.addr + (wall_y * text_one.line_l + wall_x * (text_one.bpp / 8)));
     return (color);
 }
 
@@ -106,37 +105,35 @@ void    calc_text(t_var *var)
         var->wall_x = var->posY + var->perpWallDist * var->rayDirY;
     else
         var->wall_x = var->posX + var->perpWallDist * var->rayDirX;
-    var->wall_x -= floor((var->wall_x));
+    var->wall_x -= floor(var->wall_x);
     var->wall_tex_x = (int)(var->wall_x * (double)TEX_WIDTH);
-    if (var->side == 0 && var->rayDirX > 0)
+    if ((var->side == 0 && var->rayDirX > 0)
+        || (var->side == 1 && var->rayDirY < 0))
         var->wall_tex_x = TEX_WIDTH - var->wall_tex_x - 1;
-    if (var->side == 1 && var->rayDirY < 0)
-        var->wall_tex_x = TEX_WIDTH - var->wall_tex_x - 1;
-    var->stepY = 1.0 * TEX_HEIGHT / (int)(HEIGHT / var->perpWallDist);
-    var->tex_pos = (var->drawStart - HEIGHT / 2 + (int)(HEIGHT / \
-						var->perpWallDist) / 2) * var->stepY;
+    var->step_text = 1.0 * TEX_HEIGHT / (int)(HEIGHT / var->perpWallDist);
+    var->tex_pos = (var->drawStart - HEIGHT / 2 + (int)(HEIGHT / var->perpWallDist) / 2) * var->step_text;
 }
 
 void draw_wall(t_var *var, int x)
 {
-    int	color;
-	int	idx;
+    unsigned int	color;
+	int	            y_idx;
 
-    // calc_text(var);
-    idx = var->drawStart;
-    while (idx <= var->drawEnd)
+    y_idx = var->drawStart;
+    while (y_idx < var->drawEnd)
     {
 		var->wall_tex_y = (int)var->tex_pos;
+        var->tex_pos += var->step_text;
 		if (var->side == 0 && var->rayDirX > 0)
 			color = get_wall_color(var, NO);
-		if (var->side == 0 && var->rayDirX < 0)
+		else if (var->side == 0 && var->rayDirX < 0)
 			color = get_wall_color(var, SO);
-		if (var->side == 1 && var->rayDirY > 0)
+		else if (var->side == 1 && var->rayDirY > 0)
 			color = get_wall_color(var, WE);
-		if (var->side == 1 && var->rayDirY < 0)
+		else if (var->side == 1 && var->rayDirY < 0)
 			color = get_wall_color(var, EA);
-        my_mlx_pixel_put(var, x, idx, color);
-        idx++;
+        my_mlx_pixel_put(var, x, y_idx, color);
+        y_idx++;
     }
 }
 
@@ -165,6 +162,7 @@ void draw_map(t_var *var)
         calc_step_dir(var);
         calc_wall_hit(var);
         set_draw_unit(var);
+        calc_text(var);
 		draw_wall(var, x);
     }
 }

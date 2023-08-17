@@ -6,9 +6,9 @@ static void set_dir_xpm(t_var *var, int toward)
     t_text  *tex;
 
     tex = &var->info->text_arr[toward];
-    tex->img = mlx_xpm_file_to_image(var->mlx, var->info->dir[toward], \
+    tex->img = mlx_xpm_file_to_image(var->mlx, var->info->dir[toward],\
                                     &tmp, &tmp);
-    tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->line_l, \
+    tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->line_l,\
                                     &tex->endian);
 }
 

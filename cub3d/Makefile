@@ -6,7 +6,7 @@
 #    By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/21 12:22:24 by hyungjpa          #+#    #+#              #
-#    Updated: 2023/07/27 15:43:02 by hyungjpa         ###   ########.fr        #
+#    Updated: 2023/08/19 02:21:16 by hyungjpa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,17 @@ SRC = free.c \
 	gnl_utils.c \
 	gnl.c \
 	info_init.c \
+	var_init.c \
 	info_parse_1.c \
 	info_parse_2.c \
 	info_valid_1.c \
 	info_valid_2.c \
 	main.c \
 	utils.c \
-	cub3d_mlx.c \
 	arg_check.c \
+	mlx_main.c \
+	mlx_raycasting.c \
+	mlx_draw_wall.c \
 	mlx_draw_fc.c \
 	mlx_key_hook.c \
 	mlx_events_1.c \
@@ -31,7 +34,7 @@ SRC = free.c \
 
 OBJ = $(SRC:.c=.o)
 
-NAME = cub3d
+NAME = cub3D
 
 INCLUDE_MLX = -I .mlx -Lmlx -lmlx -framework OpenGL -framework Appkit
 

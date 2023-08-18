@@ -43,7 +43,7 @@ int main(int ac, char *av[])
 	var_init(&var, &info);
 	mlx_total_init(&var);
 	// mlx 시작
-	mlx_put_image_to_window(var.mlx, var.win, var.img, 0, 0);
+	// mlx_put_image_to_window(var.mlx, var.win, var.img, 0, 0);
 	key_hook_main(&var);
 	mlx_loop_hook(var.mlx, &start_mlx, &var);
 	mlx_loop(var.mlx);

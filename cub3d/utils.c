@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:28:13 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/08 16:21:48 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/19 02:15:19 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ t_flag print_error(char *msg)
     ft_putendl_fd(msg, STDERR_FILENO);
     return (FAIL);
 }
+
+
+
+
 
 void    display(t_info *info)
 {

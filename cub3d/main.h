@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:28 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/08 17:25:28 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/19 02:28:45 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,159 +60,140 @@ typedef enum e_flag
 
 typedef struct s_text
 {
-	void    *img;
-	char    *addr;
-	int     bpp;
-	int     line_l;
-	int     endian;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_l;
+	int		endian;
 }   t_text;
 
 typedef struct s_info
 {
-
-	int     *dir_flags; // n, s, w, e, f, c
-
-	int     map_flag;
-
-	char    **dir; // 4
-
-	char    **fc; //6
-
-	int     *fc_num; // 6
-
-	char    *map_before;
-
-	char    **map;
-	char    **map_test;
-
-	int     height;
-	int     width;
-
-	char    player_dir;
-
-	int     player_x;
-	int     player_y;
-
-	t_text  *text_arr;
-
+	int		*dir_flags;
+	int		map_flag;
+	char	**dir;
+	char	**fc;
+	int		*fc_num;
+	char	*map_before;
+	char	**map;
+	char	**map_test;
+	int		height;
+	int		width;
+	char	player_dir;
+	int		player_x;
+	int		player_y;
+	t_text	*text_arr;
 }   t_info;
 
 typedef struct s_var
 {
-	void    *mlx;
-	void    *win;
-	void    *img;
-	char    *addr;
-	int     bpp;
-	int     line_l;
-	int     endian;
-
-
-	double  cameraX;
-
-	int  mapX;
-	int  mapY;
-
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_l;
+	int		endian;
+	double	cameraX;
+	int		mapX;
+	int		mapY;
 	int		drawStart;
 	int		drawEnd;
-
-	int     side;
+	int		side;
 	int		color;
 	int		wall_tex_x;
 	int		wall_tex_y;
-	double		wall_x;
-	double		tex_pos;
-	double		step_text;
+	double	wall_x;
+	double	tex_pos;
+	double	step_text;
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;
+	double	rayDirX;
+	double	rayDirY;
+	int		stepX;
+	int		stepY;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist;
+	t_info	*info;
+}	t_var;
 
-	double  posX;
-	double  posY;
-
-	double  dirX;
-	double  dirY;
-
-	double  planeX;
-	double  planeY;
-
-	double  rayDirX;
-	double  rayDirY;
-
-	int     stepX;
-	int     stepY;
-
-
-	double  sideDistX;
-	double  sideDistY;
-
-	double  deltaDistX;
-	double  deltaDistY;
-
-	double  perpWallDist;
-
-
-	t_info  *info;
-}       t_var;
-
-
-char	*get_next_line(int fd);
-char	*do_free(char **s);
-size_t	gnl_strlen(char *s);
-int	    gnl_strchr(char *s, char c);
-char	*gnl_strjoin(char **s1, char *s2);
+char			*get_next_line(int fd);
+char			*do_free(char **s);
+size_t			gnl_strlen(char *s);
+int				gnl_strchr(char *s, char c);
+char			*gnl_strjoin(char **s1, char *s2);
 
 // args_check
-t_flag  check_arg(int ac, char **av);
+t_flag			check_arg(int ac, char **av);
 
 // info_init
-t_flag  init_info(t_info *info);
-void    var_init(t_var *var, t_info *info);
-void	init_xpm_files(t_var *var);
+void			mlx_total_init(t_var *var);
+t_flag			init_info(t_info *info);
+void			init_xpm_files(t_var *var);
+
+// var_init
+void			var_init(t_var *var, t_info *info);
 
 // utils
-int     ft_sstrlen(char **tmp);
-t_flag  print_error(char *msg);
-void    display(t_info *info);
+int				ft_sstrlen(char **tmp);
+t_flag			print_error(char *msg);
 
+void			display(t_info *info);
 
 // info_parse_1
-t_flag  parse_file(int fd, t_info *info);
+t_flag			parse_file(int fd, t_info *info);
 
 // info_parse_2
-t_flag  parse_info(char *s, t_info *info);
-t_flag  parse_map(char *s, t_info *info);
-
+t_flag			parse_info(char *s, t_info *info);
+t_flag			parse_map(char *s, t_info *info);
 
 // valid_info
-t_flag  valid_info(t_info *info);
+t_flag			valid_info(t_info *info);
 
 // info_valid_2
-t_flag  check_map_args(t_info *info);
-t_flag  check_map_cross(t_info *info);
-
+t_flag			check_map_args(t_info *info);
+t_flag			check_map_cross(t_info *info);
 
 // free
-int free_str(char *s, int res);
-char    **free_split_fail(char **s, int n);
-int free_split(char **s, int res);
-int free_info(t_info *info, int res);
+int				free_str(char *s, int res);
+char			**free_split_fail(char **s, int n);
+int				free_split(char **s, int res);
+int				free_info(t_info *info, int res);
 
+// mlx_main
+void			my_mlx_pixel_put(t_var *var, int x, int y, int color);
+void			draw_map(t_var *var);
+int				start_mlx(t_var *var);
 
+// mlx_raycasting
+void			set_camera_raydir(t_var *var, int x);
+void			calc_step_dir(t_var *var);
+void			calc_wall_hit(t_var *var);
 
-// cub3d_mlx
-void	mlx_total_init(t_var *var);
-void	my_mlx_pixel_put(t_var *var, int x, int y, int color);
-int		start_mlx(t_var *var);
-void	init_xpm_files(t_var *var);
+// mlx_draw_wall
+unsigned int	get_wall_color(t_var *var, int dir);
+void			calc_text(t_var *var);
+void			draw_wall(t_var *var, int x);
+void 			set_draw_unit(t_var *var);
+
 
 //draw
-void    draw_fc(t_var *var);
+void			draw_fc(t_var *var);
 
 //key hook
-void	key_hook_main(t_var *var);
-void	key_move_left(t_var *var);
-void	key_move_right(t_var *var);
-void	key_move_forward(t_var *var);
-void	key_move_backward(t_var *var);
-void	key_rotate_left(t_var *var);
-void	key_rotate_right(t_var *var);
+void			key_hook_main(t_var *var);
+void			key_move_left(t_var *var);
+void			key_move_right(t_var *var);
+void			key_move_forward(t_var *var);
+void			key_move_backward(t_var *var);
+void			key_rotate_left(t_var *var);
+void			key_rotate_right(t_var *var);
 
 #endif

@@ -22,37 +22,29 @@ void	mlx_total_init(t_var *var)
 	init_xpm_files(var);
 }
 
-static t_flag malloc_fail_free(t_info *info, int n)
+static void err_msg_n_exit(void)
 {
-    if (n >= 0)
-        free(info->dir_flags);
-    if (n >= 1)
-        free(info->dir);
-    if (n >= 2)
-        free(info->fc);
-    if (n >= 3)
-        free(info->fc_num);
-    return (FAIL);
+    ft_putendl_fd("Error\n", STDERR_FILENO);
+    exit(1);
 }
 
-static t_flag malloc_var(t_info *info)
+static void malloc_var(t_info *info)
 {
     info->dir_flags = (int *)malloc(sizeof(int) * 6);
     if (!info->dir_flags)
-        return (FAIL);
+        err_msg_n_exit();
     info->dir = (char **)malloc(sizeof(char *) * 4);
     if (!info->dir)
-        return (malloc_fail_free(info, 0));
+        err_msg_n_exit();
     info->fc = (char **)malloc(sizeof(char *) * 6);
     if (!info->fc)
-        return (malloc_fail_free(info, 1));
+        err_msg_n_exit();
     info->fc_num = (int *)malloc(sizeof(int) * 6);
     if (!info->fc_num)
-        return (malloc_fail_free(info, 2));
+        err_msg_n_exit();
     info->text_arr = (t_text *)malloc(sizeof(t_text) * 4);
     if (!info->text_arr)
-        return (malloc_fail_free(info, 3));
-    return (SUCCESS);
+        err_msg_n_exit();
 }
 
 static void init_text(t_text *text)
@@ -64,13 +56,12 @@ static void init_text(t_text *text)
     text->endian = 0;
 }
 
-t_flag init_info(t_info *info)
+void    init_info(t_info *info)
 {
     int i;
 
     i = -1;
-    if (malloc_var(info) == FAIL)
-        return (FAIL);
+    malloc_var(info);
     while (++i < 6)
     {
         info->dir_flags[i] = 0;
@@ -91,5 +82,4 @@ t_flag init_info(t_info *info)
     info->player_dir = 0;
     info->player_x = 0;
     info->player_y = 0;
-    return (SUCCESS);
 }

@@ -48,7 +48,7 @@ LIBFT_DIR = ./libft/
 
 CC = cc
 
-CFLAGS = -O3 -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -O3 -Wall -Wextra -Werror
 
 all : $(NAME)
 

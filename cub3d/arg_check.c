@@ -27,8 +27,8 @@ static t_flag check_arg_ext(char *arg)
 t_flag  check_arg(int ac, char **av)
 {
     if (check_arg_cnt(ac) == FAIL)
-        return (print_error("Wrong number of argument"));
+        return (FAIL);
     if (check_arg_ext(av[1]) == FAIL)
-        return (print_error("Extension of the filename is not correct"));
+        return (FAIL);
     return (SUCCESS);
 }

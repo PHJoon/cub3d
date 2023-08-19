@@ -23,7 +23,6 @@ void    key_rotate_left(t_var *var)
 	var->dirY = past_dirx * sin(ROT_SPEED) + var->dirY * cos(ROT_SPEED);
     var->planeX = var->planeX * cos(ROT_SPEED) - var->planeY * sin(ROT_SPEED);
     var->planeY = past_planex * sin(ROT_SPEED) + var->planeY * cos(ROT_SPEED);
-
 }
 
 void    key_rotate_right(t_var *var)

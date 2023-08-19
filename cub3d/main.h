@@ -124,6 +124,8 @@ typedef struct s_var
 	t_info	*info;
 }	t_var;
 
+void		aaa(void);
+
 char			*get_next_line(int fd);
 char			*do_free(char **s);
 size_t			gnl_strlen(char *s);
@@ -135,7 +137,7 @@ t_flag			check_arg(int ac, char **av);
 
 // info_init
 void			mlx_total_init(t_var *var);
-t_flag			init_info(t_info *info);
+void			init_info(t_info *info);
 void			init_xpm_files(t_var *var);
 
 // var_init

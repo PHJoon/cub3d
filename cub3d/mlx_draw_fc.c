@@ -12,7 +12,7 @@
 
 #include "main.h"
 
-static  int color_decode(int *col, int flag)
+static int  color_decode(int *col, int flag)
 {
 	if (flag == 0)
 		return (col[0] << 16 | col[1] << 8 | col[2]);
@@ -37,18 +37,15 @@ static void color_atoi(t_var *var)
 }
 
 static int color_grad(int color1, int color2, double t) {
-    int r1 = (color1 >> 16) & 0xFF;
-    int g1 = (color1 >> 8) & 0xFF;
-    int b1 = color1 & 0xFF;
-
-    int r2 = (color2 >> 16) & 0xFF;
-    int g2 = (color2 >> 8) & 0xFF;
-    int b2 = color2 & 0xFF;
-
-    int r = (int)(r1 * (1 - t) + r2 * t);
-    int g = (int)(g1 * (1 - t) + g2 * t);
-    int b = (int)(b1 * (1 - t) + b2 * t);
-
+    int r;
+    int g;
+    int b;
+    
+    r = (int)(((color1 >> 16) & 0xFF) * (1 - t) + \
+                    ((color2 >> 16) & 0xFF) * t);
+    g = (int)(((color1 >> 8) & 0xFF) * (1 - t) + \
+                    ((color2 >> 8) & 0xFF) * t);
+    b = (int)((color1 & 0xFF) * (1 - t) + (color2 & 0xFF) * t);
     return ((r << 16) | (g << 8) | b);
 }
 

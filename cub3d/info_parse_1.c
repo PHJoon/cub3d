@@ -30,12 +30,12 @@ static void    check_map_flag(t_info *info)
 
 t_flag  parse_file(int fd, t_info *info)
 {
-    char    *s;
+    char    *str;
 
     while (1)
     {
-        s = get_next_line(fd);
-        if (!s)
+        str = get_next_line(fd);
+        if (!str)
         {
             if (!info->map_flag)
                 return (FAIL);
@@ -43,15 +43,15 @@ t_flag  parse_file(int fd, t_info *info)
         }
         //map parse
         if (info->map_flag)
-            parse_map(s, info);
+            parse_map(str, info);
         else
         {
             //wall texture & ceiling & floor color parse
-            if (parse_info(s, info) == FAIL)
-                return (free_str(s, FAIL));
+            if (parse_info(str, info) == FAIL)
+                return (free_str(str, FAIL));
         }
         check_map_flag(info);
-        free(s);
+        free(str);
     }
     return (SUCCESS);
 }

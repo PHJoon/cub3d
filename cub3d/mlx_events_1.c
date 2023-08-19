@@ -25,7 +25,6 @@ void	prevent_wall_crash(double rayDirX, double rayDirY, double *x, double *y)
 		*y = -0.5;
 }
 
-
 void	key_move_left(t_var *var)
 {
 	double	x;

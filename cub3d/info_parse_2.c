@@ -71,9 +71,9 @@ t_flag  parse_info(char *s, t_info *info)
     tmp = ft_split(s, ' ');
     if (!tmp)
         return (FAIL);
-    if (!ft_strncmp(tmp[0], "\n", 1)) // if there is nothing, it is an error
+    if (!ft_strncmp(tmp[0], "\n", 1))
         return (free_split(tmp, SUCCESS));
-    if (!(ft_sstrlen(tmp) == 2 || ft_sstrlen(tmp) == 4)) // the num of chunk has to be 2 or 4
+    if (!(ft_sstrlen(tmp) == 2 || ft_sstrlen(tmp) == 4))
         return (free_split(tmp, FAIL));
     if (parse_dir(info, tmp) == SUCCESS)
         return (free_split(tmp, SUCCESS));
@@ -95,6 +95,7 @@ t_flag parse_map(char *s, t_info *info)
         tmp = ft_strdup(info->map_before);
         free(info->map_before);
         info->map_before = ft_strjoin(tmp, s);
+        free(tmp);
     }
     else
         info->map_before = ft_strdup(s);

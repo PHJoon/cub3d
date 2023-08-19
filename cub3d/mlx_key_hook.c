@@ -14,7 +14,6 @@
 
 static int	key_hook_sub(int keycode, t_var *var)
 {
-	printf("keycode: %d\n", keycode);
 	if (keycode == KEY_A)
 		key_move_left(var);
 	if (keycode == KEY_W)
@@ -30,19 +29,19 @@ static int	key_hook_sub(int keycode, t_var *var)
 	return (0);
 }
 
-static int	escape_key_click(int keycode, t_var *var)
+static int	escape_key_click(int keycode)
 {
 	if (keycode == ESC)
 	{
-		mlx_destroy_window(var->mlx, var->win);
+		// mlx_destroy_window(var->mlx, var->win);
 		exit(0);
 	}
-	return (1);
+	return (EXIT_SUCCESS);
 }
 
-static int	x_button_click(t_var *var)
+static int	x_button_click(void)
 {
-	mlx_destroy_window(var->mlx, var->win);
+	// mlx_destroy_window(var->mlx, var->win);
 	exit(0);
 }
 

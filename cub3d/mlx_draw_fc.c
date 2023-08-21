@@ -33,6 +33,8 @@ static void color_atoi(t_var *var)
 	color_pal[3] = ft_atoi(var->info->fc[3]);
 	color_pal[4] = ft_atoi(var->info->fc[4]);
 	color_pal[5] = ft_atoi(var->info->fc[5]);
+    if (var->info->fc_num)
+        free(var->info->fc_num);
 	var->info->fc_num = color_pal;
 }
 

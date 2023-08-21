@@ -29,19 +29,19 @@ static int	key_hook_sub(int keycode, t_var *var)
 	return (0);
 }
 
-static int	escape_key_click(int keycode)
+static int	escape_key_click(int keycode, t_var *var)
 {
 	if (keycode == ESC)
 	{
-		// mlx_destroy_window(var->mlx, var->win);
+		mlx_destroy_window(var->mlx, var->win);
 		exit(0);
 	}
 	return (EXIT_SUCCESS);
 }
 
-static int	x_button_click(void)
+static int	x_button_click(t_var *var)
 {
-	// mlx_destroy_window(var->mlx, var->win);
+	mlx_destroy_window(var->mlx, var->win);
 	exit(0);
 }
 

@@ -142,12 +142,16 @@ int				init_xpm_files(t_var *var);
 
 // var_init
 void			var_init(t_var *var, t_info *info);
+t_flag			flag_check(int flag);
+void			set_dir_plane_n(t_var *var);
+void			set_dir_plane_s(t_var *var);
+void			set_dir_plane_w(t_var *var);
+void			set_dir_plane_e(t_var *var);
 
 // utils
 int				ft_sstrlen(char **tmp);
-t_flag			print_error(char *msg);
-
-void			display(t_info *info);
+t_flag			print_error_n_free(char *msg, t_info *info);
+// void			display(t_info *info);
 
 // info_parse_1
 t_flag			parse_file(int fd, t_info *info);
@@ -179,14 +183,11 @@ void			set_camera_raydir(t_var *var, int x);
 void			calc_step_dir(t_var *var);
 void			calc_wall_hit(t_var *var);
 
-// mlx_draw_wall
+// mlx_draw
 unsigned int	get_wall_color(t_var *var, int dir);
 void			calc_text(t_var *var);
 void			draw_wall(t_var *var, int x);
 void 			set_draw_unit(t_var *var);
-
-
-//draw
 void			draw_fc(t_var *var);
 
 //key hook

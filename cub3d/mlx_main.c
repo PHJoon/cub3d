@@ -12,34 +12,34 @@
 
 #include "main.h"
 
-void my_mlx_pixel_put(t_var *var, int x, int y, int color)
+void	my_mlx_pixel_put(t_var *var, int x, int y, int color)
 {
-    char *dst;
+	char	*dst;
 
-    dst = var->addr + (y * var->line_l + x * (var->bpp / 8));
-    *(unsigned int *)dst = color;
+	dst = var->addr + (y * var->line_l + x * (var->bpp / 8));
+	*(unsigned int *)dst = color;
 }
 
-void draw_map(t_var *var)
+void	draw_map(t_var *var)
 {
-    int x;
+	int	x;
 
-    x = -1;
-    while (++x < WIDTH)
-    {
-        set_camera_raydir(var, x);
-        calc_step_dir(var);
-        calc_wall_hit(var);
-        set_draw_unit(var);
-        calc_text(var);
-        draw_wall(var, x);
-    }
+	x = -1;
+	while (++x < WIDTH)
+	{
+		set_camera_raydir(var, x);
+		calc_step_dir(var);
+		calc_wall_hit(var);
+		set_draw_unit(var);
+		calc_text(var);
+		draw_wall(var, x);
+	}
 }
 
-int start_mlx(t_var *var)
+int	start_mlx(t_var *var)
 {
-    draw_fc(var);
-    draw_map(var);
-    mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
-    return (0);
+	draw_fc(var);
+	draw_map(var);
+	mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
+	return (0);
 }

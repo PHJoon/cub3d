@@ -12,55 +12,57 @@
 
 #include "main.h"
 
-int ft_sstrlen(char **tmp)
+int	ft_sstrlen(char **tmp)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (tmp[i])
-        i++;
-    return (i);
+	i = 0;
+	while (tmp[i])
+		i++;
+	return (i);
 }
 
-t_flag print_error(char *msg)
+t_flag	print_error_n_free(char *msg, t_info *info)
 {
-    ft_putendl_fd(msg, STDERR_FILENO);
-    return (FAIL);
+	ft_putendl_fd(msg, STDERR_FILENO);
+	if (info)
+		free_info(info, 0);
+	return (FAIL);
 }
 
-
-
-
-
-void    display(t_info *info)
+t_flag	flag_check(int flag)
 {
-    printf("dir: %s, %s, %s, %s\n", info->dir[0], info->dir[1], info->dir[2], info->dir[3]);
-    printf("fc : %s, %s, %s, %s, %s, %s\n", info->fc[0], info->fc[1], info->fc[2], info->fc[3], info->fc[4], info->fc[5]);
-    // printf("map_before : %s\n", info->map_before);
-
-    printf("player_x: %d player_y: %d\n", info->player_x, info->player_y);
-    printf("player_dir: %c\n", info->player_dir);
-
-    int t = -1;
-    int k;
-
-    printf("map : \n");
-    while (++t < info->height)
-    {
-        k = -1;
-        while (++k < info->width)
-            printf("%c", info->map[t][k]);
-        printf("\n");
-    }
-    t = -1;
-
-    printf("map->test : \n");
-    while (++t < info->height)
-    {
-        k = -1;
-        while (++k < info->width)
-            printf("%c", info->map_test[t][k]);
-        printf("\n");
-    }
-    
+	if (flag != 2)
+		return (FAIL);
+	return (SUCCESS);
 }
+
+// void	display(t_info *info)
+// {
+//     printf("dir: %s, %s, %s, %s\n", info->dir[0], info->dir[1], info->dir[2], info->dir[3]);
+//     printf("fc : %s, %s, %s, %s, %s, %s\n", info->fc[0], info->fc[1], info->fc[2], info->fc[3], info->fc[4], info->fc[5]);
+//     // printf("map_before : %s\n", info->map_before);
+//     printf("player_x: %d player_y: %d\n", info->player_x, info->player_y);
+//     printf("player_dir: %c\n", info->player_dir);
+//     int t = -1;
+//     int k;
+
+//     printf("map : \n");
+//     while (++t < info->height)
+//     {
+//         k = -1;
+//         while (++k < info->width)
+//             printf("%c", info->map[t][k]);
+//         printf("\n");
+//     }
+//     t = -1;
+
+//     printf("map->test : \n");
+//     while (++t < info->height)
+//     {
+//         k = -1;
+//         while (++k < info->width)
+//             printf("%c", info->map_test[t][k]);
+//         printf("\n");
+//     }
+// }

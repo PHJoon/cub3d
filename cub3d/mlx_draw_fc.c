@@ -12,15 +12,15 @@
 
 #include "main.h"
 
-static int  color_decode(int *col, int flag)
+static int	color_decode(int *col, int flag)
 {
 	if (flag == 0)
 		return (col[0] << 16 | col[1] << 8 | col[2]);
 	else
-		return (col[3]  << 16 | col[4] << 8 | col[5]);
+		return (col[3] << 16 | col[4] << 8 | col[5]);
 }
 
-static void color_atoi(t_var *var)
+static void	color_atoi(t_var *var)
 {
 	int	*color_pal;
 
@@ -33,49 +33,50 @@ static void color_atoi(t_var *var)
 	color_pal[3] = ft_atoi(var->info->fc[3]);
 	color_pal[4] = ft_atoi(var->info->fc[4]);
 	color_pal[5] = ft_atoi(var->info->fc[5]);
-    if (var->info->fc_num)
-        free(var->info->fc_num);
+	if (var->info->fc_num)
+		free(var->info->fc_num);
 	var->info->fc_num = color_pal;
 }
 
-static int color_grad(int color1, int color2, double t) {
-    int r;
-    int g;
-    int b;
-    
-    r = (int)(((color1 >> 16) & 0xFF) * (1 - t) + \
-                    ((color2 >> 16) & 0xFF) * t);
-    g = (int)(((color1 >> 8) & 0xFF) * (1 - t) + \
-                    ((color2 >> 8) & 0xFF) * t);
-    b = (int)((color1 & 0xFF) * (1 - t) + (color2 & 0xFF) * t);
-    return ((r << 16) | (g << 8) | b);
+static int	color_grad(int color1, int color2, double t)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = (int)(((color1 >> 16) & 0xFF) * (1 - t) + \
+					((color2 >> 16) & 0xFF) * t);
+	g = (int)(((color1 >> 8) & 0xFF) * (1 - t) + \
+					((color2 >> 8) & 0xFF) * t);
+	b = (int)((color1 & 0xFF) * (1 - t) + (color2 & 0xFF) * t);
+	return ((r << 16) | (g << 8) | b);
 }
 
-void draw_fc(t_var *var)
+void	draw_fc(t_var *var)
 {
-    int idx_h;
-    int idx_w;
+	int		idx_h;
+	int		idx_w;
 	double	cur_idx;
-	int	cur_floor;
-	int	cur_ceiling;
 
-    color_atoi(var);
-    idx_h = 0;
-    while (idx_h < HEIGHT) {
+	color_atoi(var);
+	idx_h = 0;
+	while (idx_h < HEIGHT)
+	{
 		if (idx_h >= HEIGHT / 2)
 			cur_idx = (double)(idx_h - (HEIGHT / 2)) / (HEIGHT / 2);
 		else
 			cur_idx = (double)idx_h / (HEIGHT / 2);
 		idx_w = 0;
-        cur_floor = color_grad(0x000000, color_decode(var->info->fc_num, 0), cur_idx);
-        cur_ceiling = color_grad(color_decode(var->info->fc_num, 1), 0x000000, cur_idx);
-        while (idx_w < WIDTH) {
-            if (idx_h < HEIGHT / 2)
-                my_mlx_pixel_put(var, idx_w, idx_h, cur_ceiling);
-            else
-                my_mlx_pixel_put(var, idx_w, idx_h, cur_floor);
-            idx_w++;
-        }
-        idx_h++;
-    }
+		while (idx_w < WIDTH)
+		{
+			if (idx_h < HEIGHT / 2)
+				my_mlx_pixel_put(var, idx_w, idx_h, color_grad(0x000000, \
+			color_decode(var->info->fc_num, 0), cur_idx));
+			else
+				my_mlx_pixel_put(var, idx_w, idx_h, \
+			color_grad(color_decode(var->info->fc_num, 1), 0x000000, cur_idx));
+			idx_w++;
+		}
+		idx_h++;
+	}
 }

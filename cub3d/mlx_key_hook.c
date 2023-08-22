@@ -40,7 +40,7 @@ static int	x_button_click(t_var *var)
 	exit(0);
 }
 
-void	 key_hook_main(t_var *var)
+void	key_hook_main(t_var *var)
 {
 	mlx_hook(var->win, 17, 0, &x_button_click, var);
 	mlx_hook(var->win, 2, 0, &key_hook_sub, var);

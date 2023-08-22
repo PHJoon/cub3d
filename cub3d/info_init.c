@@ -6,20 +6,22 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:26:16 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/19 02:07:36 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/22 14:02:13 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	mlx_total_init(t_var *var)
+int	mlx_total_init(t_var *var)
 {
 	var->mlx = mlx_init();
 	var->win = mlx_new_window(var->mlx, WIDTH, HEIGHT, "cub3d");
 	var->img = mlx_new_image(var->mlx, WIDTH, HEIGHT);
 	var->addr = mlx_get_data_addr(var->img, &var->bpp, \
 					&var->line_l, &var->endian);
-	init_xpm_files(var);
+	if (init_xpm_files(var) == FAIL)
+        return (FAIL);
+    return (SUCCESS);
 }
 
 static void err_msg_n_exit(void)

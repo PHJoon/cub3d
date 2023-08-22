@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:28 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/19 02:28:45 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/22 11:53:39 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,9 +136,9 @@ char			*gnl_strjoin(char **s1, char *s2);
 t_flag			check_arg(int ac, char **av);
 
 // info_init
-void			mlx_total_init(t_var *var);
+int				mlx_total_init(t_var *var);
 void			init_info(t_info *info);
-void			init_xpm_files(t_var *var);
+int				init_xpm_files(t_var *var);
 
 // var_init
 void			var_init(t_var *var, t_info *info);

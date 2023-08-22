@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:24 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 16:08:41 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/22 13:20:19 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,17 @@ int free_split(char **s, int res)
     return (res);
 }
 
+int free_map(char **s, int res, int height)
+{
+    int i;
+
+    i = -1;
+    while (++i < height)
+        free(s[i]);
+    free(s);
+    return (res);
+}
+
 int free_info(t_info *info, int res)
 {
     int i;
@@ -48,7 +59,7 @@ int free_info(t_info *info, int res)
     while (++i < 6)
     {
         free(info->fc[i]);
-        if (i < 5)
+        if (i < 4)
             free(info->dir[i]);
     }
     free(info->fc);
@@ -56,11 +67,11 @@ int free_info(t_info *info, int res)
     free(info->dir_flags);
     free(info->fc_num);
     free(info->text_arr);
-    if (!info->map_before)
+    if (info->map_before)
         free(info->map_before);
-    if (!info->map)
-        free_split(info->map, 1);
-    if (!info->map_test)
-        free_split(info->map_test, 1);
+    if (info->map)
+        free_map(info->map, 1, info->height);
+    if (info->map_test)
+        free_map(info->map_test, 1, info->height);
     return (res);
 }

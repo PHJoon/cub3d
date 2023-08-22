@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 19:12:44 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 15:59:45 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/22 12:10:42 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_flag  parse_file(int fd, t_info *info)
         if (!str)
         {
             if (!info->map_flag)
+                return (FAIL);
+            if (!info->map_before)
                 return (FAIL);
             break ;
         }

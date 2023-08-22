@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:18:15 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 16:13:33 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/22 14:01:40 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ t_flag valid_info(t_info *info)
     int i;
     int j;
 
-    // dir 체크는 xpm을 이미지로 바꿀 때 에러처리
     // fc 체크
     i = -1;
     while (++i < 6)
@@ -87,9 +86,9 @@ t_flag valid_info(t_info *info)
     info->map = make_map(info);
     info->map_test = make_map(info);
     // 맵 체크
-    if (check_map_args(info))
+    if (check_map_args(info) == FAIL)
         return (FAIL);
-    if (check_map_cross(info))
+    if (check_map_cross(info) == FAIL)
         return (FAIL);
     return (SUCCESS);
 

@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 19:12:41 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/18 15:50:21 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/22 13:50:09 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ static t_flag check_args(char c, int *flag)
     k = -1;
     if (!(c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == ' '))
         return (FAIL);
-    while (++k < 4 && c == player[k])
+    while (++k < 4)
     {
         if (c == player[k])
         {
             if (*flag)
                 return (FAIL);
-            *flag = 1;
+            (*flag)++;
+            return (SUCCESS);
         }
     }
     return (SUCCESS);
@@ -45,7 +46,7 @@ t_flag check_map_args(t_info *info)
         j = -1;
         while (++j < info->width)
         {
-            if (check_args(info->map_test[i][j], &flag))
+            if (check_args(info->map_test[i][j], &flag) == FAIL)
                 return (FAIL);
             if (flag == 1)
             {
@@ -53,11 +54,13 @@ t_flag check_map_args(t_info *info)
                 info->player_x = j;
                 info->player_y = i;
                 info->map[i][j] = '0';
-                return (SUCCESS);
+                flag++;
             }
         }
     }
-    return (FAIL);
+    if (flag != 2)
+        return (FAIL);
+    return (SUCCESS);
 }
 
 static int check_line(char c, int *cnt, int *k, int d)

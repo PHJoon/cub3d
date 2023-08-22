@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:28:13 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/19 02:15:19 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/22 13:34:42 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,6 @@ void    display(t_info *info)
 
     int t = -1;
     int k;
-    // printf("map_test : \n");
-    // while (++t < info->height)
-    // {
-    //     k = -1;
-    //     while (++k < info->width)
-    //         printf("%c", info->map_test[t][k]);
-    //     printf("\n");
-    // }
 
     printf("map : \n");
     while (++t < info->height)
@@ -58,6 +50,16 @@ void    display(t_info *info)
         k = -1;
         while (++k < info->width)
             printf("%c", info->map[t][k]);
+        printf("\n");
+    }
+    t = -1;
+
+    printf("map->test : \n");
+    while (++t < info->height)
+    {
+        k = -1;
+        while (++k < info->width)
+            printf("%c", info->map_test[t][k]);
         printf("\n");
     }
     

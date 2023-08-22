@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:29:04 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/07/27 16:00:15 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/22 13:36:47 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ t_flag parse_map(char *s, t_info *info)
     char    *tmp;
 
     tmp = ft_strtrim(s, " ");
-    if (!ft_strncmp(tmp, "\n", 2))
-        return (free_str(tmp, FAIL));
+    // if (!ft_strncmp(tmp, "\n", 2))
+    //     return (free_str(tmp, FAIL));
     free(tmp);
     if (info->map_before)
     {

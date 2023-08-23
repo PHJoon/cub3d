@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:30 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/22 13:57:05 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/23 10:02:16 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	main(int ac, char *av[])
 	if (parse_file(fd, &info) == FAIL)
 		return (print_error_n_free("Error", &info));
 	if (valid_info(&info) == FAIL)
-		return (print_error("Error", &info));
+		return (print_error_n_free("Error", &info));
 	var_init(&var, &info);
 	if (mlx_total_init(&var) == FAIL)
-		return (print_error("Error", &info));
+		return (print_error_n_free("Error", &info));
 	key_hook_main(&var);
 	mlx_loop_hook(var.mlx, &start_mlx, &var);
 	mlx_loop(var.mlx);

@@ -6,7 +6,7 @@
 #    By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/21 12:22:24 by hyungjpa          #+#    #+#              #
-#    Updated: 2023/08/19 02:21:16 by hyungjpa         ###   ########.fr        #
+#    Updated: 2023/08/23 10:03:10 by hyungjpa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRC = free.c \
 	gnl_utils.c \
 	gnl.c \
 	info_init.c \
+	var_init_utils.c \
 	var_init.c \
 	info_parse_1.c \
 	info_parse_2.c \

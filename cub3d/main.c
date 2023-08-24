@@ -6,14 +6,22 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:30 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/23 10:02:16 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/24 13:21:14 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
+void	aaa(void)
+{
+	system("leaks cub3D | grep leaked");
+}
+
+
+
 int	main(int ac, char *av[])
 {
+	atexit(aaa);
 	t_info	info;
 	t_var	var;
 	int		fd;

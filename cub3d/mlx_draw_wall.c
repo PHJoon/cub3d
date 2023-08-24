@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 02:16:46 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/19 02:18:10 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/24 13:41:58 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ void	draw_wall(t_var *var, int x)
 	{
 		var->wall_tex_y = (int)var->tex_pos;
 		var->tex_pos += var->step_text;
-		if (var->side == 0 && var->rayDirX > 0)
+		if (var->side == 1 && var->rayDirY < 0)
 			color = get_wall_color(var, NO);
-		else if (var->side == 0 && var->rayDirX < 0)
-			color = get_wall_color(var, SO);
 		else if (var->side == 1 && var->rayDirY > 0)
+			color = get_wall_color(var, SO);
+		else if (var->side == 0 && var->rayDirX < 0)
 			color = get_wall_color(var, WE);
-		else if (var->side == 1 && var->rayDirY < 0)
+		else if (var->side == 0 && var->rayDirX > 0)
 			color = get_wall_color(var, EA);
 		my_mlx_pixel_put(var, x, y_idx, color);
 		y_idx++;

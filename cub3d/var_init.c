@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 02:07:21 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/19 02:09:05 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/24 13:44:18 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	get_dir_plane(t_var *var, t_info *info)
 void	var_init(t_var *var, t_info *info)
 {
 	var->info = info;
-	var->posX = (double)info->player_x;
-	var->posY = (double)info->player_y;
+	var->posX = (double)info->player_x + 0.5;
+	var->posY = (double)info->player_y + 0.5;
 	get_dir_plane(var, info);
 	var->cameraX = 0;
 	var->mapX = 0;

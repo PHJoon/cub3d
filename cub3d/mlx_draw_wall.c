@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 02:16:46 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/24 13:41:58 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:07:34 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	calc_text(t_var *var)
 		var->wall_x = var->posX + var->perpWallDist * var->rayDirX;
 	var->wall_x -= floor(var->wall_x);
 	var->wall_tex_x = (int)(var->wall_x * (double)TEX_WIDTH);
-	if ((var->side == 0 && var->rayDirX > 0) || (var->side == 1 && \
-		var->rayDirY < 0))
+	if ((var->side == 0 && var->rayDirX < 0) || (var->side == 1 && \
+		var->rayDirY > 0))
 		var->wall_tex_x = TEX_WIDTH - var->wall_tex_x - 1;
 	var->step_text = 1.0 * TEX_HEIGHT / (int)(HEIGHT / var->perpWallDist);
 	var->tex_pos = (var->drawStart - HEIGHT / 2 + (int)(HEIGHT / \

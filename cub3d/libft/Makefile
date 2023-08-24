@@ -14,7 +14,7 @@ AR = ar
 
 ARFLAGS = rscv
 
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 

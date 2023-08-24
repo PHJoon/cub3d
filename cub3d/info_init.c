@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:26:16 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/22 14:02:13 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:24:00 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int	mlx_total_init(t_var *var)
 	var->addr = mlx_get_data_addr(var->img, &var->bpp, \
 					&var->line_l, &var->endian);
 	if (init_xpm_files(var) == FAIL)
+	{
+		mlx_destroy_image(var->mlx, var->img);
+		mlx_destroy_window(var->mlx, var->win);
 		return (FAIL);
+	}
 	return (SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:00:44 by joon-lee          #+#    #+#             */
-/*   Updated: 2023/08/24 13:35:31 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:10:35 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	set_dir_plane_w(t_var *var)
 	var->dirX = -1;
 	var->dirY = 0;
 	var->planeX = 0;
-	var->planeY = 0.66;
+	var->planeY = -0.66;
 }
 
 void	set_dir_plane_e(t_var *var)
@@ -41,5 +41,5 @@ void	set_dir_plane_e(t_var *var)
 	var->dirX = 1;
 	var->dirY = 0;
 	var->planeX = 0;
-	var->planeY = -0.66;
+	var->planeY = 0.66;
 }

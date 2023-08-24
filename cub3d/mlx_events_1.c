@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 14:13:43 by joon-lee          #+#    #+#             */
-/*   Updated: 2023/08/24 13:39:53 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:03:07 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	key_move_right(t_var *var)
 	if (var->info->map[(int)(var->posY + var->planeY \
 		* MOV_SPEED)][(int)(var->posX)] == '0')
 		var->posY += var->planeY * MOV_SPEED;
-	if (var->info->map[(int)(var->posY)][(int)(var->posX + var->dirX \
+	if (var->info->map[(int)(var->posY)][(int)(var->posX + var->planeX \
 		* MOV_SPEED)] == '0')
 		var->posX += var->planeX * MOV_SPEED;
 }

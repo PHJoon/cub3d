@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:28 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/22 15:35:38 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:30:45 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ typedef struct s_var
 	t_info	*info;
 }	t_var;
 
+void		aaa(void);
+
 char			*get_next_line(int fd);
 char			*do_free(char **s);
 size_t			gnl_strlen(char *s);
@@ -140,7 +142,7 @@ void			set_dir_plane_s(t_var *var);
 void			set_dir_plane_w(t_var *var);
 void			set_dir_plane_e(t_var *var);
 int				ft_sstrlen(char **tmp);
-t_flag			print_error_n_free(char *msg, t_info *info);
+void			print_error_n_free(char *msg, t_info *info);
 t_flag			parse_file(int fd, t_info *info);
 t_flag			parse_info(char *s, t_info *info);
 t_flag			parse_map(char *s, t_info *info);

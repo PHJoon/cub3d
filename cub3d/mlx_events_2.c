@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 14:13:53 by joon-lee          #+#    #+#             */
-/*   Updated: 2023/08/24 13:40:22 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/25 14:24:43 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,32 @@
 
 void	key_rotate_left(t_var *var)
 {
-	double	past_dirx;
-	double	past_planex;
+	double	past_dir_x;
+	double	past_plane_x;
 
-	past_dirx = var->dirX;
-	past_planex = var->planeX;
-	var->dirX = var->dirX * cos(-1 * ROT_SPEED) - var->dirY \
+	past_dir_x = var->dir_x;
+	past_plane_x = var->plane_x;
+	var->dir_x = var->dir_x * cos(-1 * ROT_SPEED) - var->dir_y \
 				* sin(-1 * ROT_SPEED);
-	var->dirY = past_dirx * sin(-1 * ROT_SPEED) + var->dirY \
+	var->dir_y = past_dir_x * sin(-1 * ROT_SPEED) + var->dir_y \
 				* cos(-1 * ROT_SPEED);
-	var->planeX = var->planeX * cos(-1 * ROT_SPEED) - var->planeY \
+	var->plane_x = var->plane_x * cos(-1 * ROT_SPEED) - var->plane_y \
 				* sin(-1 * ROT_SPEED);
-	var->planeY = past_planex * sin(-1 * ROT_SPEED) + var->planeY \
+	var->plane_y = past_plane_x * sin(-1 * ROT_SPEED) + var->plane_y \
 				* cos(-1 * ROT_SPEED);
 }
 
 void	key_rotate_right(t_var *var)
 {
-	double	past_dirx;
-	double	past_planex;
+	double	past_dir_x;
+	double	past_plane_x;
 
-	past_dirx = var->dirX;
-	past_planex = var->planeX;
-	var->dirX = var->dirX * cos(ROT_SPEED) - var->dirY * sin(ROT_SPEED);
-	var->dirY = past_dirx * sin(ROT_SPEED) + var->dirY * cos(ROT_SPEED);
-	var->planeX = var->planeX * cos(ROT_SPEED) - var->planeY * sin(ROT_SPEED);
-	var->planeY = past_planex * sin(ROT_SPEED) + var->planeY * cos(ROT_SPEED);
+	past_dir_x = var->dir_x;
+	past_plane_x = var->plane_x;
+	var->dir_x = var->dir_x * cos(ROT_SPEED) - var->dir_y * sin(ROT_SPEED);
+	var->dir_y = past_dir_x * sin(ROT_SPEED) + var->dir_y * cos(ROT_SPEED);
+	var->plane_x = var->plane_x * cos(ROT_SPEED) - var->plane_y \
+				* sin(ROT_SPEED);
+	var->plane_y = past_plane_x * sin(ROT_SPEED) + var->plane_y \
+				* cos(ROT_SPEED);
 }

@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:22:28 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/24 14:30:45 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/25 14:22:23 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@
 # define WE 2
 # define EA 3
 
-
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
@@ -56,7 +55,7 @@ typedef enum e_flag
 {
 	SUCCESS,
 	FAIL
-}   t_flag;
+}	t_flag;
 
 typedef struct s_text
 {
@@ -65,7 +64,7 @@ typedef struct s_text
 	int		bpp;
 	int		line_l;
 	int		endian;
-}   t_text;
+}	t_text;
 
 typedef struct s_info
 {
@@ -83,7 +82,7 @@ typedef struct s_info
 	int		player_x;
 	int		player_y;
 	t_text	*text_arr;
-}   t_info;
+}	t_info;
 
 typedef struct s_var
 {
@@ -94,11 +93,11 @@ typedef struct s_var
 	int		bpp;
 	int		line_l;
 	int		endian;
-	double	cameraX;
-	int		mapX;
-	int		mapY;
-	int		drawStart;
-	int		drawEnd;
+	double	camera_x;
+	int		map_x;
+	int		map_y;
+	int		draw_start;
+	int		draw_end;
 	int		side;
 	int		color;
 	int		wall_tex_x;
@@ -106,25 +105,23 @@ typedef struct s_var
 	double	wall_x;
 	double	tex_pos;
 	double	step_text;
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
-	double	rayDirX;
-	double	rayDirY;
-	int		stepX;
-	int		stepY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	raydir_x;
+	double	raydir_y;
+	int		step_x;
+	int		step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
 	t_info	*info;
 }	t_var;
-
-void		aaa(void);
 
 char			*get_next_line(int fd);
 char			*do_free(char **s);
@@ -162,7 +159,7 @@ void			calc_wall_hit(t_var *var);
 unsigned int	get_wall_color(t_var *var, int dir);
 void			calc_text(t_var *var);
 void			draw_wall(t_var *var, int x);
-void 			set_draw_unit(t_var *var);
+void			set_draw_unit(t_var *var);
 void			draw_fc(t_var *var);
 void			key_hook_main(t_var *var);
 void			key_move_left(t_var *var);

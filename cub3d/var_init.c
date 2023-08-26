@@ -26,6 +26,9 @@ static void	get_dir_plane(t_var *var, t_info *info)
 
 void	var_init(t_var *var, t_info *info)
 {
+	int		idx;
+
+	idx = 0;
 	var->info = info;
 	var->pos_x = (double)info->player_x + 0.5;
 	var->pos_y = (double)info->player_y + 0.5;
@@ -43,4 +46,6 @@ void	var_init(t_var *var, t_info *info)
 	var->delta_dist_x = 0;
 	var->delta_dist_x = 0;
 	var->perp_wall_dist = 0;
+	while (idx <= 5)
+		var->keys[idx++] = 0;
 }

@@ -48,8 +48,15 @@
 # define KEY_RIGHT 124
 # define ESC 53
 
-# define ROT_SPEED 0.16
-# define MOV_SPEED 0.20
+# define A 0
+# define W 1
+# define S 2
+# define D 3
+# define LEFT 4
+# define RIGHT 5
+
+# define ROT_SPEED 0.08
+# define MOV_SPEED 0.08
 
 typedef enum e_flag
 {
@@ -120,6 +127,7 @@ typedef struct s_var
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	perp_wall_dist;
+	int		keys[6];
 	t_info	*info;
 }	t_var;
 

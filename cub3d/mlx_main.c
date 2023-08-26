@@ -36,10 +36,27 @@ void	draw_map(t_var *var)
 	}
 }
 
+static void read_keys(t_var *var)
+{
+	if (var->keys[A])
+		key_move_left(var);
+	if (var->keys[W])
+		key_move_forward(var);
+	if (var->keys[S])
+		key_move_backward(var);
+	if (var->keys[D])
+		key_move_right(var);
+	if (var->keys[LEFT])
+		key_rotate_left(var);
+	if (var->keys[RIGHT])
+		key_rotate_right(var);
+}
+
 int	start_mlx(t_var *var)
 {
 	draw_fc(var);
 	draw_map(var);
+	read_keys(var);
 	mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
 	return (0);
 }

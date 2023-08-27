@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 14:16:00 by joon-lee          #+#    #+#             */
-/*   Updated: 2023/08/24 14:36:11 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/27 15:53:40 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@ void	draw_fc(t_var *var)
 		while (idx_w < WIDTH)
 		{
 			if (idx_h < HEIGHT / 2)
-				my_mlx_pixel_put(var, idx_w, idx_h, color_decode(var->info->fc_num, 1));
+				my_mlx_pixel_put(var, idx_w, idx_h, \
+				color_decode(var->info->fc_num, 1));
 			else
-				my_mlx_pixel_put(var, idx_w, idx_h, color_decode(var->info->fc_num, 0));
+				my_mlx_pixel_put(var, idx_w, idx_h, \
+				color_decode(var->info->fc_num, 0));
 			idx_w++;
 		}
 		idx_h++;

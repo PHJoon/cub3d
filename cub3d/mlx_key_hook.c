@@ -6,7 +6,7 @@
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 14:14:44 by joon-lee          #+#    #+#             */
-/*   Updated: 2023/08/22 14:01:15 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/27 15:53:13 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ static int	x_button_click(t_var *var)
 void	key_hook_main(t_var *var)
 {
 	mlx_hook(var->win, 17, 0, &x_button_click, var);
-	mlx_hook(var->win, 2, 1L<<0, &key_hook_press, var);
-	mlx_hook(var->win, 3, 1L<<1, &key_hook_release, var);
+	mlx_hook(var->win, 2, 1L << 0, &key_hook_press, var);
+	mlx_hook(var->win, 3, 1L << 1, &key_hook_release, var);
 }

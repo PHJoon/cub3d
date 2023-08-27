@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_cub3d_main.c                                   :+:      :+:    :+:   */
+/*   mlx_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungjpa <hyungjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 02:11:31 by hyungjpa          #+#    #+#             */
-/*   Updated: 2023/08/19 02:15:25 by hyungjpa         ###   ########.fr       */
+/*   Updated: 2023/08/27 15:54:18 by hyungjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	draw_map(t_var *var)
 	}
 }
 
-static void read_keys(t_var *var)
+static void	read_keys(t_var *var)
 {
 	if (var->keys[A])
 		key_move_left(var);
